@@ -1,5 +1,6 @@
 import { Smartphone, Wifi, MessageSquare, Globe, DollarSign, Users, Zap, BarChart2, Target, FileText, TrendingUp, Star, Award } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const solutions = [
   { icon: Target, title: "Campaign Management", desc: "Comprehensive digital campaign planning and execution" },
@@ -154,10 +155,11 @@ export default function VAS() {
             </button>
           </div>
 
-          <p className="text-center text-gray-600 text-sm">Copyright ©  2026</p>
+          <p className="text-center text-gray-600 text-sm">Copyright © Alphamovil 2026</p>
 
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -28,7 +28,7 @@ const sections = [
   {
     id: "nutra",
     title: "Nutra & Wellness",
-    subtitle: "Straight from the Hills! | Ameora & Play Tonight",
+    subtitle: "Straight from the valley!! | Ameora & Play Tonight",
     gradient: "from-green-700 via-emerald-500 to-teal-400",
     link: "/nutra",
     Icon: Leaf,

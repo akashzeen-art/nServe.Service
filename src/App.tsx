@@ -5,6 +5,7 @@ import VOD from "./pages/VOD";
 import IGaming from "./pages/IGaming";
 import Nutra from "./pages/Nutra";
 import VAS from "./pages/VAS";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Preloader from "./components/Preloader";
 
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/igaming" element={<IGaming />} />
           <Route path="/nutra" element={<Nutra />} />
           <Route path="/vas" element={<VAS />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

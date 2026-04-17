@@ -1,5 +1,6 @@
 import { Leaf, Shield, Zap, Globe, FlaskConical, Award } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 
 const badges = [
@@ -30,7 +31,7 @@ const products = [
     id: "playtonight",
     name: "Play Tonight",
     tagline: "Wellness For Men",
-    description: "Performance and vitality through bioactive compounds, herbs, and minerals — straight from the hills.",
+    description: "Performance and vitality through bioactive compounds, herbs, and minerals — Straight from the valley!.",
     gradient: "from-green-600 to-emerald-400",
     accent: "green",
   },
@@ -42,7 +43,7 @@ export default function Nutra() {
       <Navbar title="Nutra & Wellness" />
       <HeroSection
         title="Designed For You"
-        subtitle="Straight from the Hills!"
+        subtitle="Straight from the valley!!"
       />
 
       <div className="bg-gradient-to-b from-slate-900 to-slate-950 px-6 py-20">
@@ -128,6 +129,7 @@ export default function Nutra() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

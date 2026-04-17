@@ -1,5 +1,6 @@
 import { Gamepad2, Zap, Trophy, Users, Star, DollarSign } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const features = [
   { icon: Zap, label: "Technology" },
@@ -107,6 +108,7 @@ export default function IGaming() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
