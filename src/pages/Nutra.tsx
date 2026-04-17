@@ -1,7 +1,6 @@
 import { Leaf, Shield, Zap, Globe, FlaskConical, Award } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import HeroSection from "@/components/HeroSection";
 
 const badges = [
   { icon: Leaf, label: "100% Herbal" },
@@ -41,10 +40,20 @@ export default function Nutra() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-700 via-emerald-500 to-teal-400">
       <Navbar title="Nutra & Wellness" />
-      <HeroSection
-        title="Designed For You"
-        subtitle="Straight from the valley!!"
-      />
+
+      {/* Hero with GIF BG */}
+      <div className="h-screen flex flex-col items-center justify-center text-white px-6 relative overflow-hidden">
+        <img src="/Nutra.gif" alt="" className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 right-10 w-96 h-96 rounded-full blur-3xl bg-white/10" />
+          <div className="absolute bottom-10 left-10 w-80 h-80 rounded-full blur-3xl bg-white/10" />
+          <div className="absolute top-1/2 left-1/4 w-64 h-64 rounded-full blur-3xl bg-white/5" />
+        </div>
+        <div className="relative z-10 text-center">
+          <h2 className="text-6xl md:text-8xl font-black mb-6 drop-shadow-lg tracking-tight">Designed For You</h2>
+          <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">Straight from the valley!!</p>
+        </div>
+      </div>
 
       <div className="bg-gradient-to-b from-slate-900 to-slate-950 px-6 py-20">
         <div className="max-w-5xl mx-auto space-y-16">
