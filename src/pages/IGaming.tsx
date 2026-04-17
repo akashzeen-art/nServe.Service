@@ -88,9 +88,9 @@ export default function IGaming() {
           <div>
             <h2 className="text-4xl font-black text-white mb-2">iGame</h2>
             <p className="text-gray-400 mb-8">Next-gen multiplayer gaming experiences</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {["/Game/Igame1.png","/Game/Igame2.png","/Game/Igame3.png","/Game/Igame4.png"].map((src, i) => (
-                <div key={i} className="aspect-video rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
+                <div key={i} className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
                   <img src={src} alt={`iGame ${i+1}`} className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300" />
                 </div>
               ))}
@@ -101,20 +101,20 @@ export default function IGaming() {
           <div>
             <h2 className="text-4xl font-black text-white mb-2">Quiz</h2>
             <p className="text-gray-400 mb-8">Test your knowledge, win real rewards</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {["/Game/Quiz1.png","/Game/Quiz2.png","/Game/Quiz3.png"].map((src, i) => (
-                <div key={i} className="aspect-video rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
+                <div key={i} className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
                   <img src={src} alt={`Quiz ${i+1}`} className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300" />
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="text-center">
+          {/* <div className="text-center">
             <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95">
               Play Now
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer />

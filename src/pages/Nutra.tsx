@@ -76,18 +76,23 @@ export default function Nutra() {
             </p>
             <div className="grid md:grid-cols-2 gap-8">
               {products.map((p) => (
-                <div key={p.id} className={`relative rounded-3xl bg-gradient-to-br ${p.gradient} p-8 overflow-hidden shadow-xl hover:scale-105 transition-all duration-300`}>
+                <div key={p.id} className={`relative rounded-3xl bg-gradient-to-br ${p.gradient} overflow-hidden shadow-xl hover:scale-105 transition-all duration-300`}>
                   <div className="absolute inset-0 bg-black/10" />
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Leaf className="w-8 h-8 text-white" />
+                  <img
+                    src={p.id === "ameora" ? "/Nuta/ameora.png" : "/Nuta/Playtonight.png"}
+                    alt={p.name}
+                    className="w-full h-64 object-cover"
+                  />
+                  <div className="relative z-10 p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Leaf className="w-6 h-6 text-white" />
                       <div>
-                        <h3 className="text-2xl font-black text-white">{p.name}</h3>
-                        <p className="text-white/70 text-sm font-semibold uppercase tracking-wider">{p.tagline}</p>
+                        <h3 className="text-xl font-black text-white">{p.name}</h3>
+                        <p className="text-white/70 text-xs font-semibold uppercase tracking-wider">{p.tagline}</p>
                       </div>
                     </div>
                     <p className="text-white/80 text-sm leading-relaxed">{p.description}</p>
-                    <div className="mt-6 h-0.5 w-12 bg-white/40 rounded-full" />
+                    <div className="mt-4 h-0.5 w-12 bg-white/40 rounded-full" />
                   </div>
                 </div>
               ))}
