@@ -4,10 +4,8 @@ import HeroSection from "@/components/HeroSection";
 import ThumbnailGrid from "@/components/ThumbnailGrid";
 
 const thumbnails = [
-  { id: "vod-1", title: "Latest Movies", label: "VOD", gradient: "from-blue-600 to-cyan-400", Icon: Play },
-  { id: "vod-2", title: "Top Series", label: "VOD", gradient: "from-blue-500 to-indigo-400", Icon: Play },
-  { id: "vod-3", title: "Documentaries", label: "VOD", gradient: "from-cyan-500 to-blue-400", Icon: Play },
-  { id: "vod-4", title: "Originals", label: "VOD", gradient: "from-indigo-500 to-cyan-500", Icon: Play },
+  { id: "vod-1", title: "High Risk", label: "VOD", gradient: "from-red-600 to-orange-400", Icon: Play },
+  { id: "vod-2", title: "Low Risk", label: "VOD", gradient: "from-blue-500 to-cyan-400", Icon: Play },
 ];
 
 export default function VOD() {
