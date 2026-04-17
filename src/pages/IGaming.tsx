@@ -84,18 +84,27 @@ export default function IGaming() {
             </div>
           </div>
 
-          {/* Game categories */}
+          {/* iGame Section */}
           <div>
-            <h2 className="text-4xl font-black text-white text-center mb-2">Game Categories</h2>
-            <p className="text-gray-400 text-center mb-10">Explore all gaming verticals</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {thumbnails.map((thumb) => (
-                <div key={thumb.id} className={`relative h-40 rounded-2xl bg-gradient-to-br ${thumb.gradient} overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group`}>
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition-colors" />
-                  <div className="relative h-full flex flex-col items-center justify-center text-white gap-2">
-                    <Gamepad2 className="w-8 h-8" />
-                    <h3 className="text-lg font-bold text-center px-2">{thumb.title}</h3>
-                  </div>
+            <h2 className="text-4xl font-black text-white mb-2">iGame</h2>
+            <p className="text-gray-400 mb-8">Next-gen multiplayer gaming experiences</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              {["/Game/Igame1.png","/Game/Igame2.png","/Game/Igame3.png","/Game/Igame4.png"].map((src, i) => (
+                <div key={i} className="aspect-video rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
+                  <img src={src} alt={`iGame ${i+1}`} className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Quiz Section */}
+          <div>
+            <h2 className="text-4xl font-black text-white mb-2">Quiz</h2>
+            <p className="text-gray-400 mb-8">Test your knowledge, win real rewards</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {["/Game/Quiz1.png","/Game/Quiz2.png","/Game/Quiz3.png"].map((src, i) => (
+                <div key={i} className="aspect-video rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
+                  <img src={src} alt={`Quiz ${i+1}`} className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300" />
                 </div>
               ))}
             </div>
