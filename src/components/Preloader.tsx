@@ -55,7 +55,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       <img
         src="/1111.gif"
         alt=""
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
       />
     </div>
   );
