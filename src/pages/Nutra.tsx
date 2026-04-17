@@ -78,11 +78,13 @@ export default function Nutra() {
               {products.map((p) => (
                 <div key={p.id} className={`relative rounded-3xl bg-gradient-to-br ${p.gradient} overflow-hidden shadow-xl hover:scale-105 transition-all duration-300`}>
                   <div className="absolute inset-0 bg-black/10" />
-                  <img
-                    src={p.id === "ameora" ? "/Nuta/ameora.png" : "/Nuta/Playtonight.png"}
-                    alt={p.name}
-                    className="w-full h-64 object-cover"
-                  />
+                  <div className="flex flex-col items-center pt-8 px-8">
+                    <img
+                      src={p.id === "ameora" ? "/Nuta/ameora.png" : "/Nuta/Playtonight.png"}
+                      alt={p.name}
+                      className="w-56 h-56 object-contain drop-shadow-2xl"
+                    />
+                  </div>
                   <div className="relative z-10 p-6">
                     <div className="flex items-center gap-3 mb-3">
                       <Leaf className="w-6 h-6 text-white" />
@@ -127,11 +129,11 @@ export default function Nutra() {
             </div>
           </div>
 
-          <div className="text-center">
+          {/* <div className="text-center">
             <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95">
               Explore Now
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer />
