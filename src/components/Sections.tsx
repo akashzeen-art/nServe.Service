@@ -139,11 +139,14 @@ export default function Sections() {
             0{index + 1}
           </span>
 
-          {/* Text */}
-          <div className="relative z-10 text-center px-6 max-w-3xl">
+          {/* Text — fully clickable, navigates to section link */}
+          <div
+            onClick={() => navigate(section.link)}
+            className="relative z-10 text-center px-6 max-w-3xl cursor-pointer group/text"
+          >
             <h1
               ref={(el) => { titleRefs.current[index] = el; }}
-              className="text-6xl md:text-8xl font-black text-white mb-4 drop-shadow-lg tracking-tight"
+              className="text-6xl md:text-8xl font-black text-white mb-4 drop-shadow-lg tracking-tight group-hover/text:opacity-80 transition-opacity"
             >
               {section.title}
             </h1>
@@ -167,9 +170,9 @@ export default function Sections() {
 
           {/* Scroll hint — first section only */}
           {index === 0 && (
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 text-xs tracking-widest uppercase">
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70 text-base font-semibold tracking-widest uppercase">
               <span>Scroll</span>
-              <div className="w-px h-10 bg-gradient-to-b from-white/40 to-transparent animate-pulse" />
+              <div className="w-0.5 h-10 bg-gradient-to-b from-white/70 to-transparent animate-pulse" />
             </div>
           )}
         </div>
