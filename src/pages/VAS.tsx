@@ -67,9 +67,9 @@ export default function VAS() {
               <p className="text-gray-400 leading-relaxed mb-8">
                 While we provide end-to-end solutions to telecommunication needs, we strive to develop platforms that enhance the very usage of technology. With a combined experience of <span className="text-orange-400 font-bold">30+ years</span> in the industry, the team has understood the gap in the telecom industry — the need for a company that provides marketing and technological requirements to their client.
               </p>
-              <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-200 hover:scale-105 active:scale-95">
+              {/* <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-200 hover:scale-105 active:scale-95">
                 Know More
-              </button>
+              </button> */}
             </div>
             <div className="grid grid-cols-2 gap-4">
               {services.map(({ icon: Icon, label }) => (
@@ -149,13 +149,13 @@ export default function VAS() {
             </div>
           </div>
 
-          <div className="text-center">
+          {/* <div className="text-center">
             <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95">
               Connect With Us
             </button>
-          </div>
+          </div> */}
 
-          <p className="text-center text-gray-600 text-sm">Copyright © Alphamovil 2026</p>
+          {/* <p className="text-center text-gray-600 text-sm">Copyright © Alphamovil 2026</p> */}
 
         </div>
       </div>

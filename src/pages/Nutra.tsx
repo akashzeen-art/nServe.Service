@@ -38,7 +38,7 @@ const products = [
 
 export default function Nutra() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-700 via-emerald-500 to-teal-400">
+    <div className="min-h-screen bg-black">
       <Navbar title="Nutra & Wellness" />
 
       {/* Hero with GIF BG */}
