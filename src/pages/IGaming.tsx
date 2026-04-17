@@ -31,7 +31,7 @@ export default function IGaming() {
         />
         <div className="absolute inset-0 bg-black/40 pointer-events-none" />
         <div className="relative z-10 text-center">
-          <h2 className="text-6xl md:text-8xl font-black mb-6 drop-shadow-lg tracking-tight">Play 365</h2>
+          <h2 className="text-6xl md:text-8xl font-black mb-6 drop-shadow-lg tracking-tight">iGAMING</h2>
           <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">Play Smart. Win Big.</p>
         </div>
       </div>

@@ -19,7 +19,7 @@ const whyUs = [
 ];
 
 const services = [
-  { icon: Smartphone, label: "Mobile VAS" },
+  { icon: Smartphone, label: "Mobile MVAS" },
   { icon: Wifi, label: "Data Services" },
   { icon: MessageSquare, label: "SMS & Messaging" },
   { icon: Globe, label: "Digital Content" },
@@ -28,10 +28,10 @@ const services = [
 const models = ["CPA", "CPM", "CPS", "CPC"];
 const regions = ["India", "South East Asia", "Middle East", "Africa", "Europe"];
 
-export default function VAS() {
+export default function MMVAS() {
   return (
     <div className="min-h-screen bg-black">
-      <Navbar title="VAS" />
+      <Navbar title="MVAS" />
 
       {/* Hero with GIF BG */}
       <div className="h-screen flex flex-col items-center justify-center text-white px-6 relative overflow-hidden">
@@ -43,9 +43,9 @@ export default function VAS() {
         </div>
         <div className="relative z-10 text-center">
           <p className="text-orange-400 font-bold uppercase tracking-widest text-sm mb-4"> Digital</p>
-          <h2 className="text-6xl md:text-8xl font-black mb-6 drop-shadow-lg tracking-tight">VAS</h2>
+          <h2 className="text-6xl md:text-8xl font-black mb-6 drop-shadow-lg tracking-tight">MVAS</h2>
           <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-            Value Added Services — Connecting Billions
+            
           </p>
         </div>
       </div>

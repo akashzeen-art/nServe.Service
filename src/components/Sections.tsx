@@ -10,7 +10,7 @@ const sections = [
   {
     id: "vod",
     title: "Video On Demand",
-    subtitle: "Your Screen. Your Rules. | CPA · CPM · CPS",
+    subtitle: "",
     gradient: "from-blue-700 via-blue-500 to-cyan-400",
     link: "/vod",
     Icon: Play,
@@ -19,7 +19,7 @@ const sections = [
   {
     id: "igaming",
     title: "iGaming",
-    subtitle: "Play Smart. Win Big. | Skill Based Fantasy Sports",
+    subtitle: "",
     gradient: "from-purple-700 via-pink-500 to-rose-400",
     link: "/igaming",
     Icon: Gamepad2,
@@ -28,7 +28,7 @@ const sections = [
   {
     id: "nutra",
     title: "Nutra & Wellness",
-    subtitle: "Straight from the valley!! | Ameora & Play Tonight",
+    subtitle: "",
     gradient: "from-green-700 via-emerald-500 to-teal-400",
     link: "/nutra",
     Icon: Leaf,
@@ -36,8 +36,8 @@ const sections = [
   },
   {
     id: "vas",
-    title: "VAS",
-    subtitle: "Value Added Services — Connecting Billions",
+    title: "MVAS",
+    subtitle: "",
     gradient: "from-orange-700 via-amber-500 to-yellow-400",
     link: "/vas",
     Icon: Radio,
