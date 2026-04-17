@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight, Play, Gamepad2, Leaf } from "lucide-react";
+import { ArrowRight, Play, Gamepad2, Leaf, Radio } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,26 +10,38 @@ const sections = [
   {
     id: "vod",
     title: "Video On Demand",
-    subtitle: "Stream unlimited movies, series & originals",
+    subtitle: "Your Screen. Your Rules. | CPA · CPM · CPS",
     gradient: "from-blue-700 via-blue-500 to-cyan-400",
     link: "/vod",
     Icon: Play,
+    bg: "/Untitled design.gif",
   },
   {
     id: "igaming",
     title: "iGaming",
-    subtitle: "Next-gen multiplayer & live tournaments",
+    subtitle: "Play Smart. Win Big. | Skill Based Fantasy Sports",
     gradient: "from-purple-700 via-pink-500 to-rose-400",
     link: "/igaming",
     Icon: Gamepad2,
+    bg: "/game-and-watch-dancing.gif",
   },
   {
     id: "nutra",
     title: "Nutra & Wellness",
-    subtitle: "PlayTonight & Ameora — wellness reimagined",
+    subtitle: "Straight from the Hills! | Ameora & Play Tonight",
     gradient: "from-green-700 via-emerald-500 to-teal-400",
     link: "/nutra",
     Icon: Leaf,
+    bg: "/shilout.gif",
+  },
+  {
+    id: "vas",
+    title: "VAS",
+    subtitle: "Value Added Services — Connecting Billions",
+    gradient: "from-orange-700 via-amber-500 to-yellow-400",
+    link: "/vas",
+    Icon: Radio,
+    bg: "/nserve_items.gif",
   },
 ];
 
@@ -103,6 +115,15 @@ export default function Sections() {
           className={`sticky top-0 h-screen w-full bg-gradient-to-br ${section.gradient} flex flex-col items-center justify-center overflow-hidden`}
           style={{ zIndex: index + 1 }}
         >
+          {/* GIF background */}
+          {section.bg && (
+            <img
+              src={section.bg}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover opacity-45 pointer-events-none"
+            />
+          )}
+
           {/* Floating blobs */}
           <div className="absolute inset-0 pointer-events-none">
             <div ref={(el) => { blob1Refs.current[index] = el; }} className="absolute top-10 right-10 w-96 h-96 rounded-full blur-3xl bg-white/10" />
@@ -117,14 +138,6 @@ export default function Sections() {
           >
             0{index + 1}
           </span>
-
-          {/* Icon */}
-          <div
-            ref={(el) => { iconRefs.current[index] = el; }}
-            className="relative z-10 mb-6 p-5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-xl"
-          >
-            <section.Icon className="w-10 h-10 text-white" />
-          </div>
 
           {/* Text */}
           <div className="relative z-10 text-center px-6 max-w-3xl">
