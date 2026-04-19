@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-black border-t border-white/[0.06] px-6 py-10">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-3">
-          <span className="text-white font-black text-lg tracking-tight" style={{ fontFamily: "Syne, sans-serif" }}>nServe</span>
+          <img src="/logo.png" alt="nServe" className="h-8 w-auto object-contain" />
           <span className="text-white/20 text-xs">|</span>
           <p className="text-white/30 text-xs">© {new Date().getFullYear()} All rights reserved.</p>
         </div>
