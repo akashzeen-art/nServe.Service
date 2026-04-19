@@ -32,7 +32,7 @@ export default function HeroSection({ title, subtitle }: HeroSectionProps) {
         <h2
           ref={titleRef}
           className="font-black text-white drop-shadow-2xl mb-6 leading-[0.9]"
-          style={{ opacity: 0, fontSize: "clamp(3rem, 9vw, 7rem)", fontFamily: "Syne, sans-serif", letterSpacing: "-0.03em" }}
+          style={{ opacity: 0, fontSize: "clamp(2rem, 6vw, 4.5rem)", fontFamily: "Syne, sans-serif", letterSpacing: "-0.03em" }}
         >
           {title}
         </h2>

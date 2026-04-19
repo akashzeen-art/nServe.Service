@@ -43,7 +43,7 @@ export default function MMVAS() {
         </div>
         <div className="relative z-10 text-center">
           <p className="text-orange-400 font-bold uppercase tracking-widest text-sm mb-4"> Digital</p>
-          <h2 className="text-6xl md:text-8xl font-black mb-6 drop-shadow-lg tracking-tight">MVAS</h2>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 drop-shadow-lg tracking-tight">MVAS</h2>
           <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">
             
           </p>

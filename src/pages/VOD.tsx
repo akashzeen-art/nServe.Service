@@ -56,7 +56,7 @@ export default function VOD() {
           className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none"
         />
         <div className="relative z-10 text-center">
-          <h2 className="text-6xl md:text-8xl font-black mb-6 drop-shadow-lg tracking-tight">Video On Demand</h2>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 drop-shadow-lg tracking-tight">Video On Demand</h2>
           <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">Your Screen. Your Rules.</p>
         </div>
       </div>
