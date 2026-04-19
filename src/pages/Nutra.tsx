@@ -67,6 +67,36 @@ export default function Nutra() {
             </p>
           </div>
 
+          {/* Certifications */}
+          <div>
+            <h3 className="text-2xl font-black text-white text-center mb-6">Certifications</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {certifications.map(({ icon: Icon, label }) => (
+                <div key={label} className="flex flex-col items-center gap-2 p-5 rounded-2xl bg-white/5 border border-white/10">
+                  <Icon className="w-7 h-7 text-green-400" />
+                  <span className="text-white/80 text-xs font-semibold text-center">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* About Nutra */}
+          <div className="rounded-2xl bg-gradient-to-br from-green-600/20 to-emerald-500/10 border border-green-500/30 p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Leaf className="w-6 h-6 text-green-400" />
+              <h3 className="text-white font-bold text-lg">About Our Nutra Platform</h3>
+            </div>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              The rise and retention of Nutraceutical products in the general public is driven by heavy trust and reliable performance of the product and their success in the market.
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed mt-4">
+              nServeTech produces two distinct line-ups for Males and Females — for a healthy personal lifestyle to add more confidence and satisfaction to our customers.
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed mt-4">
+              Fully compliant Certifications and affiliations — and a formula from the Valleys of the Himalayas delivers <span className="text-green-400 font-semibold">100% Trust</span> and fully safe results to every single client!
+            </p>
+          </div>
+
           {/* Trust badges */}
           <div className="grid grid-cols-3 gap-4">
             {badges.map(({ icon: Icon, label }) => (
@@ -105,19 +135,6 @@ export default function Nutra() {
                     <p className="text-white/80 text-sm leading-relaxed">{p.description}</p>
                     <div className="mt-4 h-0.5 w-12 bg-white/40 rounded-full" />
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Certifications */}
-          <div>
-            <h3 className="text-2xl font-black text-white text-center mb-6">Certifications</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {certifications.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex flex-col items-center gap-2 p-5 rounded-2xl bg-white/5 border border-white/10">
-                  <Icon className="w-7 h-7 text-green-400" />
-                  <span className="text-white/80 text-xs font-semibold text-center">{label}</span>
                 </div>
               ))}
             </div>
