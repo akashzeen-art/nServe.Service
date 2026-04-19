@@ -9,9 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 const sections = [
   {
     id: "vod",
-    title: "Video On Demand",
-    subtitle: "",
-    gradient: "from-blue-700 via-blue-500 to-cyan-400",
+    title: "Video On\nDemand",
+    subtitle: "Your Screen. Your Rules.",
+    chip: "CPA · CPM · CPS",
+    gradient: "from-[#0f2027] via-[#1a4a6e] to-[#0ea5e9]",
+    titleGradient: "from-sky-300 via-blue-200 to-cyan-300",
     link: "/vod",
     Icon: Play,
     bg: "/Untitled design.gif",
@@ -19,17 +21,21 @@ const sections = [
   {
     id: "igaming",
     title: "iGaming",
-    subtitle: "",
-    gradient: "from-purple-700 via-pink-500 to-rose-400",
+    subtitle: "Play Smart. Win Big.",
+    chip: "Skill Based · Fantasy Sports",
+    gradient: "from-[#1a0533] via-[#6b21a8] to-[#ec4899]",
+    titleGradient: "from-purple-300 via-pink-200 to-rose-300",
     link: "/igaming",
     Icon: Gamepad2,
     bg: "/game-and-watch-dancing.gif",
   },
   {
     id: "nutra",
-    title: "Nutra & Wellness",
-    subtitle: "",
-    gradient: "from-green-700 via-emerald-500 to-teal-400",
+    title: "Nutra &\nWellness",
+    subtitle: "Straight from the Himalayas.",
+    chip: "Ameora · Play Tonight",
+    gradient: "from-[#022c22] via-[#065f46] to-[#14b8a6]",
+    titleGradient: "from-emerald-300 via-green-200 to-teal-300",
     link: "/nutra",
     Icon: Leaf,
     bg: "/shilout.gif",
@@ -37,8 +43,10 @@ const sections = [
   {
     id: "vas",
     title: "MVAS",
-    subtitle: "",
-    gradient: "from-orange-700 via-amber-500 to-yellow-400",
+    subtitle: "Value Added Services.",
+    chip: "Connecting Billions",
+    gradient: "from-[#1c0a00] via-[#92400e] to-[#f59e0b]",
+    titleGradient: "from-orange-300 via-amber-200 to-yellow-300",
     link: "/vas",
     Icon: Radio,
     bg: "/nserve_items.gif",
@@ -48,59 +56,39 @@ const sections = [
 export default function Sections() {
   const navigate = useNavigate();
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
   const titleRefs = useRef<(HTMLHeadingElement | null)[]>([]);
   const subtitleRefs = useRef<(HTMLParagraphElement | null)[]>([]);
   const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const blob1Refs = useRef<(HTMLDivElement | null)[]>([]);
   const blob2Refs = useRef<(HTMLDivElement | null)[]>([]);
   const numRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const chipRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
-    // Stacked scroll: each section slides up over the previous
     sectionRefs.current.forEach((section, index) => {
       if (!section || index === 0) return;
-      gsap.fromTo(
-        section,
-        { yPercent: 100 },
-        {
-          yPercent: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "top top",
-            scrub: true,
-          },
-        }
-      );
+      gsap.fromTo(section, { yPercent: 100 }, {
+        yPercent: 0, ease: "none",
+        scrollTrigger: { trigger: section, start: "top bottom", end: "top top", scrub: true },
+      });
     });
 
-    // First section entrance animation
-    const first = sectionRefs.current[0];
-    if (first) {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.fromTo(numRefs.current[0], { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.8 })
-        .fromTo(iconRefs.current[0], { opacity: 0, scale: 0.4, rotate: -20 }, { opacity: 1, scale: 1, rotate: 0, duration: 0.7 }, "-=0.4")
-        .fromTo(titleRefs.current[0], { opacity: 0, y: 60, skewY: 4 }, { opacity: 1, y: 0, skewY: 0, duration: 0.8 }, "-=0.4")
-        .fromTo(subtitleRefs.current[0], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
-        .fromTo(btnRefs.current[0], { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5 }, "-=0.3");
-    }
+    // First section entrance
+    const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+    tl.fromTo(numRefs.current[0], { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 1 })
+      .fromTo(titleRefs.current[0], { opacity: 0, y: 80, skewY: 6 }, { opacity: 1, y: 0, skewY: 0, duration: 1 }, "-=0.5")
+      .fromTo(chipRefs.current[0], { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5 }, "-=0.4")
+      .fromTo(subtitleRefs.current[0], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7 }, "-=0.3")
+      .fromTo(btnRefs.current[0], { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5 }, "-=0.3");
 
-    // Floating blob animations per section
+    // Floating blobs
     sectionRefs.current.forEach((_, i) => {
       const b1 = blob1Refs.current[i];
       const b2 = blob2Refs.current[i];
-      if (b1) gsap.to(b1, { x: 30, y: -30, duration: 5 + i, repeat: -1, yoyo: true, ease: "sine.inOut" });
-      if (b2) gsap.to(b2, { x: -25, y: 25, duration: 6 + i, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1 });
-    });
-
-    // Icon continuous float
-    iconRefs.current.forEach((icon) => {
-      if (!icon) return;
-      gsap.to(icon, { y: -8, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      if (b1) gsap.to(b1, { x: 40, y: -40, duration: 6 + i, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      if (b2) gsap.to(b2, { x: -30, y: 30, duration: 7 + i, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1.5 });
     });
 
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -117,62 +105,60 @@ export default function Sections() {
         >
           {/* GIF background */}
           {section.bg && (
-            <img
-              src={section.bg}
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover opacity-45 pointer-events-none"
-            />
+            <img src={section.bg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" />
           )}
 
-          {/* Floating blobs */}
+          {/* Noise texture overlay */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")" }} />
+
+          {/* Blobs */}
           <div className="absolute inset-0 pointer-events-none">
-            <div ref={(el) => { blob1Refs.current[index] = el; }} className="absolute top-10 right-10 w-96 h-96 rounded-full blur-3xl bg-white/10" />
-            <div ref={(el) => { blob2Refs.current[index] = el; }} className="absolute bottom-10 left-10 w-80 h-80 rounded-full blur-3xl bg-white/10" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-3xl bg-white/5" />
+            <div ref={(el) => { blob1Refs.current[index] = el; }} className="absolute top-10 right-10 w-[500px] h-[500px] rounded-full blur-[120px] bg-white/10" />
+            <div ref={(el) => { blob2Refs.current[index] = el; }} className="absolute bottom-10 left-10 w-96 h-96 rounded-full blur-[100px] bg-white/10" />
           </div>
 
           {/* Section number */}
-          <span
-            ref={(el) => { numRefs.current[index] = el; }}
-            className="absolute top-8 left-8 text-white/15 text-8xl font-black select-none"
-          >
+          <span ref={(el) => { numRefs.current[index] = el; }} className="absolute top-8 left-8 font-black select-none text-[120px] leading-none text-white/[0.06]" style={{ fontFamily: "Syne, sans-serif" }}>
             0{index + 1}
           </span>
 
-          {/* Text — fully clickable, navigates to section link */}
-          <div
-            onClick={() => navigate(section.link)}
-            className="relative z-10 text-center px-6 max-w-3xl cursor-pointer group/text"
-          >
+          {/* Content */}
+          <div onClick={() => navigate(section.link)} className="relative z-10 text-center px-6 max-w-4xl cursor-pointer">
+            {/* Chip */}
+            <span ref={(el) => { chipRefs.current[index] = el; }} className="inline-block mb-6 px-4 py-1.5 rounded-full text-xs font-semibold tracking-[0.2em] uppercase border border-white/20 bg-white/10 backdrop-blur-sm text-white/80">
+              {section.chip}
+            </span>
+
+            {/* Title */}
             <h1
               ref={(el) => { titleRefs.current[index] = el; }}
-              className="text-6xl md:text-8xl font-black text-white mb-4 drop-shadow-lg tracking-tight group-hover/text:opacity-80 transition-opacity"
+              className={`font-black text-transparent bg-clip-text bg-gradient-to-br ${section.titleGradient} drop-shadow-2xl whitespace-pre-line leading-[0.9] mb-6`}
+              style={{ fontSize: "clamp(3.5rem, 10vw, 8rem)", fontFamily: "Syne, sans-serif" }}
             >
               {section.title}
             </h1>
-            <p
-              ref={(el) => { subtitleRefs.current[index] = el; }}
-              className="text-xl md:text-2xl text-white/80 leading-relaxed"
-            >
+
+            {/* Subtitle */}
+            <p ref={(el) => { subtitleRefs.current[index] = el; }} className="text-lg md:text-2xl text-white/60 font-light tracking-wide">
               {section.subtitle}
             </p>
           </div>
 
-          {/* Know More CTA */}
+          {/* Know More */}
           <button
             ref={(el) => { btnRefs.current[index] = el; }}
             onClick={() => navigate(section.link)}
-            className="absolute bottom-6 right-6 flex items-center gap-1.5 bg-white/10 hover:bg-white/25 backdrop-blur-sm border border-white/30 text-white text-sm font-medium py-2 px-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 group"
+            className="absolute bottom-8 right-8 flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-sm font-semibold py-2.5 px-5 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 group"
           >
             Know More
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
 
-          {/* Scroll hint — first section only */}
+          {/* Scroll hint */}
           {index === 0 && (
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70 text-base font-semibold tracking-widest uppercase">
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-xs font-semibold tracking-[0.3em] uppercase">
               <span>Scroll</span>
-              <div className="w-0.5 h-10 bg-gradient-to-b from-white/70 to-transparent animate-pulse" />
+              <div className="w-px h-10 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
             </div>
           )}
         </div>

@@ -12,24 +12,24 @@ export default function Navbar({ title }: NavbarProps) {
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.fromTo(
-      navRef.current,
-      { y: -60, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-    );
+    gsap.fromTo(navRef.current, { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" });
   }, []);
 
   return (
-    <div ref={navRef} className="sticky top-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
+    <div ref={navRef} className="sticky top-0 z-50 bg-black/30 backdrop-blur-xl border-b border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <button
           onClick={() => navigate("/")}
-          className="flex items-center gap-2 text-white hover:opacity-70 transition-all duration-200 hover:-translate-x-1 group"
+          className="flex items-center gap-2 text-white/70 hover:text-white transition-all duration-200 group"
         >
-          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
-          Back
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform duration-200" />
+          <span className="text-sm font-medium">Back</span>
         </button>
-        <h1 className="text-xl font-bold text-white">{title}</h1>
+
+        <h1 className="text-base font-bold text-white tracking-wide" style={{ fontFamily: "Syne, sans-serif" }}>
+          {title}
+        </h1>
+
         <div className="w-16" />
       </div>
     </div>

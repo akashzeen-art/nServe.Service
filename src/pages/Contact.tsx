@@ -8,11 +8,12 @@ export default function Contact() {
 
       {/* Header */}
       <div className="text-center py-20 px-6">
-        <h1 className="text-5xl md:text-7xl font-black text-white mb-4 tracking-tight">Contact Us</h1>
-        <p className="text-gray-400 text-lg md:text-xl">We're here to help. Reach out to us anytime.</p>
+        <p className="text-orange-400 font-semibold uppercase tracking-[0.2em] text-xs mb-4">Get In Touch</p>
+        <h1 className="font-black text-white mb-4 tracking-tight" style={{ fontSize: "clamp(2.5rem, 7vw, 5rem)", fontFamily: "Syne, sans-serif" }}>Contact Us</h1>
+        <p className="text-white/40 text-base md:text-lg font-light">We're here to help. Reach out to us anytime.</p>
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 pb-24 space-y-6">
+      <div className="max-w-2xl mx-auto px-4 sm:px-8 pb-24 space-y-6">
 
         {/* Address */}
         <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex gap-4">

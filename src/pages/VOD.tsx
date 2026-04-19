@@ -46,7 +46,7 @@ export default function VOD() {
       <Navbar title="Video On Demand" />
 
       {/* Hero with video BG */}
-      <div className="h-screen flex flex-col items-center justify-center text-white px-6 relative overflow-hidden">
+      <div className="h-screen flex flex-col items-center justify-center text-white px-4 sm:px-8 relative overflow-hidden">
         <video
           src="https://vz-4e71f4f3-133.b-cdn.net/689ccc98-64a5-47b6-8acd-b024ed957cee/play_360p.mp4"
           autoPlay
@@ -61,9 +61,8 @@ export default function VOD() {
         </div>
       </div>
 
-      {/* Info Section */}
-      <div className="bg-gradient-to-b from-slate-900 to-slate-950 px-6 py-20">
-        <div className="max-w-5xl mx-auto space-y-16">
+      <div className="bg-gradient-to-b from-slate-900 to-slate-950 px-4 sm:px-8 py-20">
+        <div className="max-w-4xl mx-auto space-y-16">
 
           {/* Attention banner */}
           <div className="text-center border border-blue-500/40 rounded-3xl p-10 bg-blue-500/5 backdrop-blur-sm">

@@ -23,7 +23,7 @@ export default function IGaming() {
       <Navbar title="iGaming" />
 
       {/* Hero with GIF BG */}
-      <div className="h-screen flex flex-col items-center justify-center text-white px-6 relative overflow-hidden">
+      <div className="h-screen flex flex-col items-center justify-center text-white px-4 sm:px-8 relative overflow-hidden">
         <img
           src="/gaming_gif1.gif"
           alt=""
@@ -36,8 +36,8 @@ export default function IGaming() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-b from-slate-900 to-slate-950 px-6 py-20">
-        <div className="max-w-5xl mx-auto space-y-16">
+      <div className="bg-gradient-to-b from-slate-900 to-slate-950 px-4 sm:px-8 py-20">
+        <div className="max-w-4xl mx-auto space-y-16">
 
           {/* Main description */}
           <div className="text-center border border-purple-500/40 rounded-3xl p-10 bg-purple-500/5">

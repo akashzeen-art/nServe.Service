@@ -42,7 +42,7 @@ export default function Nutra() {
       <Navbar title="Nutra & Wellness" />
 
       {/* Hero with GIF BG */}
-      <div className="h-screen flex flex-col items-center justify-center text-white px-6 relative overflow-hidden">
+      <div className="h-screen flex flex-col items-center justify-center text-white px-4 sm:px-8 relative overflow-hidden">
         <img src="/Nutra.gif" alt="" className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-10 right-10 w-96 h-96 rounded-full blur-3xl bg-white/10" />
@@ -55,8 +55,8 @@ export default function Nutra() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-b from-slate-900 to-slate-950 px-6 py-20">
-        <div className="max-w-5xl mx-auto space-y-16">
+      <div className="bg-gradient-to-b from-slate-900 to-slate-950 px-4 sm:px-8 py-20">
+        <div className="max-w-4xl mx-auto space-y-16">
 
           {/* Description */}
           <div className="text-center border border-green-500/40 rounded-3xl p-10 bg-green-500/5">
