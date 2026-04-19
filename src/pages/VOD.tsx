@@ -75,13 +75,18 @@ export default function VOD() {
           </div>
 
           {/* Features grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {features.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                <Icon className="w-8 h-8 text-blue-400" />
-                <span className="text-white text-sm font-semibold text-center">{label}</span>
-              </div>
-            ))}
+          <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
+            <h3 className="text-white font-bold text-lg mb-6">What We Offer</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {features.map(({ icon: Icon, label }) => (
+                <div key={label} className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4 text-blue-400" />
+                  </div>
+                  <span className="text-white text-sm font-semibold">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Traffic & Earnings */}
@@ -107,6 +112,23 @@ export default function VOD() {
                 <span className="text-gray-400 text-sm"> / Month</span>
               </p>
             </div>
+          </div>
+
+          {/* About VOD */}
+          <div className="rounded-2xl bg-gradient-to-br from-cyan-600/20 to-blue-500/10 border border-cyan-500/30 p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Play className="w-6 h-6 text-cyan-400" />
+              <h3 className="text-white font-bold text-lg">About Our VOD Platform</h3>
+            </div>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Our flagship VOD offerings generate organic revenue through subscription and one time purchase titles of value to the customer.
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed mt-4">
+              Operating in multiple countries through a dedicated content library, mServeTech ensures customer satisfaction and recurring revenue through repeated renewals — hence ensuring a healthy revenue and retention metrics!
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed mt-4">
+              Video on demand operates in two completely unique <span className="text-cyan-400 font-semibold">High Risk</span> and <span className="text-cyan-400 font-semibold">Low Risk</span> content profiles, with offerings for the individual user of unique content preference with inhouse content curation and a legal content distribution.
+            </p>
           </div>
 
           {/* CTA strip */}

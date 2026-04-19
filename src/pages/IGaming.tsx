@@ -48,12 +48,14 @@ export default function IGaming() {
             </p>
           </div>
 
-          {/* Features */}
-          <div className="grid grid-cols-3 gap-4">
+          {/* Features — single narrow box */}
+          <div className="rounded-2xl bg-white/5 border border-white/10 px-8 py-5 flex flex-wrap items-center gap-6">
             {features.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                <Icon className="w-8 h-8 text-purple-400" />
-                <span className="text-white text-sm font-semibold text-center">{label}</span>
+              <div key={label} className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-lg bg-purple-500/20 flex items-center justify-center shrink-0">
+                  <Icon className="w-4 h-4 text-purple-400" />
+                </div>
+                <span className="text-white text-sm font-semibold">{label}</span>
               </div>
             ))}
           </div>
@@ -82,6 +84,20 @@ export default function IGaming() {
                 ))}
               </div>
             </div>
+          </div>
+
+          {/* About iGaming */}
+          <div className="rounded-2xl bg-gradient-to-br from-violet-600/20 to-purple-500/10 border border-violet-500/30 p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Gamepad2 className="w-6 h-6 text-violet-400" />
+              <h3 className="text-white font-bold text-lg">About Our iGaming Platform</h3>
+            </div>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Our dedicated iGaming vertical is capturing high stakes and heavy revenue and retention fields into regulation friendly economies, operating with licensed operators in some countries — to independent operations in few other companies — ensuring <span className="text-violet-400 font-semibold">FULLY COMPLIANT</span> and <span className="text-violet-400 font-semibold">LEGAL</span> operations and ensuring a clean, legal and customer friendly revenue operations.
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed mt-4">
+              Our heavily tailored offerings relevant to the regional gaming and interaction interests of the local public ensure a healthy and immersive iGaming experience. This is demonstrated in our Quiz focused web platform and the iGaming portal spread across different geographies for dedicated service.
+            </p>
           </div>
 
           {/* iGame Section */}
