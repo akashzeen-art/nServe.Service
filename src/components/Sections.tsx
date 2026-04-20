@@ -20,7 +20,7 @@ const sections = [
   },
   {
     id: "igaming",
-    title: "iGaming",
+    title: "Play 365",
     subtitle: "Play Smart. Win Big.",
     chip: "Skill Based · Fantasy Sports",
     gradient: "from-[#1a0533] via-[#6b21a8] to-[#ec4899]",
@@ -145,7 +145,7 @@ export default function Sections() {
               <img
                 src="/Nuta/timelogo.png"
                 alt="logo"
-                className="absolute -top-8 left-0 h-20 w-auto object-contain opacity-90"
+                className="absolute -top-16 left-0 h-20 w-auto object-contain opacity-90"
               />
             )}
 

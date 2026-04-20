@@ -20,7 +20,7 @@ const thumbnails = [
 export default function IGaming() {
   return (
     <div className="min-h-screen bg-black">
-      <Navbar title="iGaming" />
+      <Navbar title="Play 365" />
 
       {/* Hero with GIF BG */}
       <div className="h-screen flex flex-col items-center justify-center text-white px-4 sm:px-8 relative overflow-hidden">
@@ -44,7 +44,7 @@ export default function IGaming() {
             <p className="text-purple-400 font-bold uppercase tracking-widest text-sm mb-3">Online & Real-Time</p>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Skill Based Fantasy Sports</h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              The new iGaming — where skill meets thrill
+              The new Play 365 — where skill meets thrill
             </p>
           </div>
 
@@ -60,17 +60,17 @@ export default function IGaming() {
             ))}
           </div>
 
-          {/* About iGaming */}
+          {/* About Play 365 */}
           <div className="rounded-2xl bg-gradient-to-br from-violet-600/20 to-purple-500/10 border border-violet-500/30 p-8">
             <div className="flex items-center gap-3 mb-4">
               <Gamepad2 className="w-6 h-6 text-violet-400" />
-              <h3 className="text-white font-bold text-lg">About Our iGaming Platform</h3>
+              <h3 className="text-white font-bold text-lg">About Our Play 365 Platform</h3>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Our dedicated iGaming vertical is capturing high stakes and heavy revenue and retention fields into regulation friendly economies, operating with licensed operators in some countries — to independent operations in few other companies — ensuring <span className="text-violet-400 font-semibold">FULLY COMPLIANT</span> and <span className="text-violet-400 font-semibold">LEGAL</span> operations and ensuring a clean, legal and customer friendly revenue operations.
+              Our dedicated Play 365 vertical is capturing high stakes and heavy revenue and retention fields into regulation friendly economies, operating with licensed operators in some countries — to independent operations in few other companies — ensuring <span className="text-violet-400 font-semibold">FULLY COMPLIANT</span> and <span className="text-violet-400 font-semibold">LEGAL</span> operations and ensuring a clean, legal and customer friendly revenue operations.
             </p>
             <p className="text-gray-300 text-sm leading-relaxed mt-4">
-              Our heavily tailored offerings relevant to the regional gaming and interaction interests of the local public ensure a healthy and immersive iGaming experience. This is demonstrated in our Quiz focused web platform and the iGaming portal spread across different geographies for dedicated service.
+              Our heavily tailored offerings relevant to the regional gaming and interaction interests of the local public ensure a healthy and immersive Play 365 experience. This is demonstrated in our Quiz focused web platform and the Play 365 portal spread across different geographies for dedicated service.
             </p>
           </div>
 

@@ -73,6 +73,53 @@ export default function VOD() {
             </p>
           </div>
 
+          {/* Verticals */}
+          <div>
+            <h2 className="text-4xl font-black text-white text-center mb-2">View Portfolio</h2>
+            <p className="text-gray-400 text-center mb-10">Choose your risk appetite</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+              {/* High Risk — clickable, opens slider below */}
+              <div className="col-span-1 sm:col-span-2">
+                <button
+                  onClick={() => setShowHighRisk((v) => !v)}
+                  className="relative h-48 w-full rounded-2xl bg-gradient-to-br from-red-600 to-orange-400 overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition-colors" />
+                  <div className="relative h-full flex flex-col items-center justify-center text-white gap-3">
+                    <Play className="w-10 h-10" />
+                    <h3 className="text-2xl font-bold">High Risk</h3>
+                    <p className="text-xs text-white/70 uppercase tracking-widest">VOD</p>
+                    <p className="text-sm font-black text-white uppercase tracking-widest drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">Click Here To View</p>
+                  </div>
+                </button>
+                {showHighRisk && (
+                  <ImageSlider images={highRiskImages} title="High Risk" />
+                )}
+              </div>
+
+              {/* Low Risk — clickable, opens slider below */}
+              <div className="col-span-1 sm:col-span-2">
+                <button
+                  onClick={() => setShowLowRisk((v) => !v)}
+                  className="relative h-48 w-full rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition-colors" />
+                  <div className="relative h-full flex flex-col items-center justify-center text-white gap-3">
+                    <Play className="w-10 h-10" />
+                    <h3 className="text-2xl font-bold">Low Risk</h3>
+                    <p className="text-xs text-white/70 uppercase tracking-widest">VOD</p>
+                    <p className="text-sm font-black text-white uppercase tracking-widest drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">Click Here To View</p>
+                  </div>
+                </button>
+                {showLowRisk && (
+                  <ImageSlider images={lowRiskImages} title="Low Risk" />
+                )}
+              </div>
+
+            </div>
+          </div>
+
           {/* About VOD */}
           <div className="rounded-2xl bg-gradient-to-br from-cyan-600/20 to-blue-500/10 border border-cyan-500/30 p-8">
             <div className="flex items-center gap-3 mb-4">
@@ -137,53 +184,6 @@ export default function VOD() {
               <span className="text-blue-400 font-semibold uppercase tracking-wider text-sm">To Connect With Us</span>
             </div>
             <p className="text-white/60 text-sm">Flip the Sheet — reach out to our partnerships team today</p>
-          </div>
-
-          {/* Verticals */}
-          <div>
-            <h2 className="text-4xl font-black text-white text-center mb-2">Our Verticals</h2>
-            <p className="text-gray-400 text-center mb-10">Choose your risk appetite</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-
-              {/* High Risk — clickable, opens slider below */}
-              <div className="col-span-1 sm:col-span-2">
-                <button
-                  onClick={() => setShowHighRisk((v) => !v)}
-                  className="relative h-48 w-full rounded-2xl bg-gradient-to-br from-red-600 to-orange-400 overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group"
-                >
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition-colors" />
-                  <div className="relative h-full flex flex-col items-center justify-center text-white gap-3">
-                    <Play className="w-10 h-10" />
-                    <h3 className="text-2xl font-bold">High Risk</h3>
-                    <p className="text-xs text-white/70 uppercase tracking-widest">VOD</p>
-                    <p className="text-xs font-black text-white uppercase tracking-widest">Click Here To View</p>
-                  </div>
-                </button>
-                {showHighRisk && (
-                  <ImageSlider images={highRiskImages} title="High Risk" />
-                )}
-              </div>
-
-              {/* Low Risk — clickable, opens slider below */}
-              <div className="col-span-1 sm:col-span-2">
-                <button
-                  onClick={() => setShowLowRisk((v) => !v)}
-                  className="relative h-48 w-full rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group"
-                >
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition-colors" />
-                  <div className="relative h-full flex flex-col items-center justify-center text-white gap-3">
-                    <Play className="w-10 h-10" />
-                    <h3 className="text-2xl font-bold">Low Risk</h3>
-                    <p className="text-xs text-white/70 uppercase tracking-widest">VOD</p>
-                    <p className="text-xs font-black text-white uppercase tracking-widest">Click Here To View</p>
-                  </div>
-                </button>
-                {showLowRisk && (
-                  <ImageSlider images={lowRiskImages} title="Low Risk" />
-                )}
-              </div>
-
-            </div>
           </div>
 
         </div>
