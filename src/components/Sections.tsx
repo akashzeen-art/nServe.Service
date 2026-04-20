@@ -139,12 +139,15 @@ export default function Sections() {
 
           {/* Content */}
           <div onClick={() => navigate(section.link)} className="relative z-10 text-center px-6 max-w-4xl cursor-pointer">
-            <span
-              ref={(el) => { chipRefs.current[index] = el; }}
-              className="inline-block mb-6 px-4 py-1.5 rounded-full text-xs font-semibold tracking-[0.2em] uppercase border border-white/20 bg-white/10 backdrop-blur-sm text-white/80"
-            >
-              {section.chip}
-            </span>
+
+            {/* Logo — only on VOD section */}
+            {index === 0 && (
+              <img
+                src="/Nuta/timelogo.png"
+                alt="logo"
+                className="absolute -top-16 left-0 h-12 w-auto object-contain opacity-90"
+              />
+            )}
 
             <h1
               ref={(el) => { titleRefs.current[index] = el; }}
