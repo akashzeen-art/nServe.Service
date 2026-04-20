@@ -178,13 +178,13 @@ export default function VOD() {
           </div>
 
           {/* CTA strip */}
-          <div className="text-center rounded-2xl bg-white/5 border border-white/10 p-8">
+          {/* <div className="text-center rounded-2xl bg-white/5 border border-white/10 p-8">
             <div className="flex items-center justify-center gap-2 mb-3">
               <Users className="w-5 h-5 text-blue-400" />
               <span className="text-blue-400 font-semibold uppercase tracking-wider text-sm">To Connect With Us</span>
             </div>
             <p className="text-white/60 text-sm">Flip the Sheet — reach out to our partnerships team today</p>
-          </div>
+          </div> */}
 
         </div>
       </div>

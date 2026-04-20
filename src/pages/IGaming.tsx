@@ -33,6 +33,16 @@ export default function IGaming() {
         <div className="relative z-10 text-center">
           <h2 className="text-4xl md:text-6xl font-black mb-6 drop-shadow-lg tracking-tight">iGAMING</h2>
           <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">Play Smart. Win Big.</p>
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
+            {features.map(({ icon: Icon, label }) => (
+              <div key={label} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full">
+                <div className="w-6 h-6 rounded-lg bg-purple-500/30 flex items-center justify-center shrink-0">
+                  <Icon className="w-3.5 h-3.5 text-purple-300" />
+                </div>
+                <span className="text-white text-sm font-semibold">{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -48,16 +58,18 @@ export default function IGaming() {
             </p>
           </div>
 
-          {/* Features — single narrow box */}
-          <div className="rounded-2xl bg-white/5 border border-white/10 px-8 py-5 flex flex-wrap items-center gap-6">
-            {features.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-purple-500/20 flex items-center justify-center shrink-0">
-                  <Icon className="w-4 h-4 text-purple-400" />
+
+          {/* iGame Section */}
+          <div>
+            <h2 className="text-4xl font-black text-white mb-2">iGame</h2>
+            <p className="text-gray-400 mb-8">Next-gen multiplayer gaming experiences</p>
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+              {["/Game/Igame1.png","/Game/Igame2.png","/Game/Igame3.png","/Game/Igame4.png"].map((src, i) => (
+                <div key={i} className="rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
+                  <img src={src} alt={`iGame ${i+1}`} className="w-full h-auto object-contain group-hover:brightness-110 transition-all duration-300" />
                 </div>
-                <span className="text-white text-sm font-semibold">{label}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* About Play 365 */}
@@ -97,19 +109,6 @@ export default function IGaming() {
                   </span>
                 ))}
               </div>
-            </div>
-          </div>
-
-          {/* iGame Section */}
-          <div>
-            <h2 className="text-4xl font-black text-white mb-2">iGame</h2>
-            <p className="text-gray-400 mb-8">Next-gen multiplayer gaming experiences</p>
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-              {["/Game/Igame1.png","/Game/Igame2.png","/Game/Igame3.png","/Game/Igame4.png"].map((src, i) => (
-                <div key={i} className="rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
-                  <img src={src} alt={`iGame ${i+1}`} className="w-full h-auto object-contain group-hover:brightness-110 transition-all duration-300" />
-                </div>
-              ))}
             </div>
           </div>
 
