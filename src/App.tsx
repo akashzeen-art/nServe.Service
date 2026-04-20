@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Index from "./pages/Index";
 import VOD from "./pages/VOD";
@@ -17,6 +17,20 @@ function ScrollToTop() {
   return null;
 }
 
+function FloatingContactBtn() {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  if (pathname === "/contact") return null;
+  return (
+    <button
+      onClick={() => navigate("/contact")}
+      className="fixed bottom-6 left-6 z-[9998] bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold text-sm py-3 px-6 rounded-full shadow-xl hover:scale-105 active:scale-95 transition-all duration-200"
+    >
+      Contact Us
+    </button>
+  );
+}
+
 export default function App() {
   const [loading, setLoading] = useState(true);
 
@@ -25,6 +39,7 @@ export default function App() {
       {loading && <Preloader onComplete={() => setLoading(false)} />}
       <BrowserRouter>
         <ScrollToTop />
+        <FloatingContactBtn />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/vod" element={<VOD />} />
