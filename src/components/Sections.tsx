@@ -87,8 +87,8 @@ export default function Sections() {
             ease: "none",
             scrollTrigger: {
               trigger: wrapperRef.current,
-              start: `${((index - 1) / (n - 1)) * 100}% top`,
-              end: `${(index / (n - 1)) * 100}% top`,
+              start: `${((index - 1) / (n - 1)) * 75}% top`,
+              end: `${(index / (n - 1)) * 75}% top`,
               scrub: 0.6,
               invalidateOnRefresh: true,
             },
@@ -180,7 +180,7 @@ export default function Sections() {
 
   // ── Non-iOS: GSAP stacked scroll ─────────────────────────────────────────
   return (
-    <div ref={wrapperRef} style={{ height: `${(sections.length - 1) * 100}vh` }}>
+    <div ref={wrapperRef} style={{ height: `${sections.length * 100}vh` }}>
       {sections.map((section, index) => (
         <div
           key={section.id}
