@@ -55,47 +55,65 @@ const sections = [
 
 export default function Sections() {
   const navigate = useNavigate();
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const titleRefs = useRef<(HTMLHeadingElement | null)[]>([]);
   const subtitleRefs = useRef<(HTMLParagraphElement | null)[]>([]);
   const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const chipRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const blob1Refs = useRef<(HTMLDivElement | null)[]>([]);
   const blob2Refs = useRef<(HTMLDivElement | null)[]>([]);
-  const numRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const chipRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
-    sectionRefs.current.forEach((section, index) => {
-      if (!section || index === 0) return;
-      gsap.fromTo(section, { yPercent: 100 }, {
-        yPercent: 0, ease: "none",
-        scrollTrigger: { trigger: section, start: "top bottom", end: "top top", scrub: true },
+    const ctx = gsap.context(() => {
+      // Each section (except first) slides up from below as user scrolls
+      sectionRefs.current.forEach((section, index) => {
+        if (!section || index === 0) return;
+
+        gsap.fromTo(
+          section,
+          { yPercent: 100 },
+          {
+            yPercent: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "top top",
+              scrub: 1,
+              invalidateOnRefresh: true,
+            },
+          }
+        );
       });
-    });
 
-    // First section entrance
-    const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-    tl.fromTo(numRefs.current[0], { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 1 })
-      .fromTo(titleRefs.current[0], { opacity: 0, y: 80, skewY: 6 }, { opacity: 1, y: 0, skewY: 0, duration: 1 }, "-=0.5")
-      .fromTo(chipRefs.current[0], { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5 }, "-=0.4")
-      .fromTo(subtitleRefs.current[0], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7 }, "-=0.3")
-      .fromTo(btnRefs.current[0], { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5 }, "-=0.3");
+      // Entrance animation for first section
+      gsap.timeline({ defaults: { ease: "power4.out" } })
+        .fromTo(titleRefs.current[0], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 })
+        .fromTo(chipRefs.current[0], { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5 }, "-=0.5")
+        .fromTo(subtitleRefs.current[0], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3")
+        .fromTo(btnRefs.current[0], { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5 }, "-=0.3");
 
-    // Floating blobs
-    sectionRefs.current.forEach((_, i) => {
-      const b1 = blob1Refs.current[i];
-      const b2 = blob2Refs.current[i];
-      if (b1) gsap.to(b1, { x: 40, y: -40, duration: 6 + i, repeat: -1, yoyo: true, ease: "sine.inOut" });
-      if (b2) gsap.to(b2, { x: -30, y: 30, duration: 7 + i, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1.5 });
-    });
+      // Floating blobs
+      sectionRefs.current.forEach((_, i) => {
+        const b1 = blob1Refs.current[i];
+        const b2 = blob2Refs.current[i];
+        if (b1) gsap.to(b1, { x: 40, y: -40, duration: 6 + i, repeat: -1, yoyo: true, ease: "sine.inOut" });
+        if (b2) gsap.to(b2, { x: -30, y: 30, duration: 7 + i, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1.5 });
+      });
+    }, wrapperRef);
 
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
   }, []);
 
   return (
-    <div className="relative w-full">
+    // Wrapper height = sections * 100vh so scroll room exists for each panel
+    <div ref={wrapperRef} style={{ height: `${sections.length * 100}vh` }}>
       {sections.map((section, index) => (
         <div
           key={section.id}
@@ -108,9 +126,6 @@ export default function Sections() {
             <img src={section.bg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" />
           )}
 
-          {/* Noise texture overlay */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")" }} />
-
           {/* Blobs */}
           <div className="absolute inset-0 pointer-events-none">
             <div ref={(el) => { blob1Refs.current[index] = el; }} className="absolute top-10 right-10 w-[500px] h-[500px] rounded-full blur-[120px] bg-white/10" />
@@ -118,28 +133,31 @@ export default function Sections() {
           </div>
 
           {/* Section number */}
-          <span ref={(el) => { numRefs.current[index] = el; }} className="absolute top-8 left-8 font-black select-none text-[120px] leading-none text-white/[0.06]" style={{ fontFamily: "Syne, sans-serif" }}>
+          <span className="absolute top-8 left-8 font-black select-none text-[120px] leading-none text-white/[0.06]" style={{ fontFamily: "Syne, sans-serif" }}>
             0{index + 1}
           </span>
 
           {/* Content */}
           <div onClick={() => navigate(section.link)} className="relative z-10 text-center px-6 max-w-4xl cursor-pointer">
-            {/* Chip */}
-            <span ref={(el) => { chipRefs.current[index] = el; }} className="inline-block mb-6 px-4 py-1.5 rounded-full text-xs font-semibold tracking-[0.2em] uppercase border border-white/20 bg-white/10 backdrop-blur-sm text-white/80">
+            <span
+              ref={(el) => { chipRefs.current[index] = el; }}
+              className="inline-block mb-6 px-4 py-1.5 rounded-full text-xs font-semibold tracking-[0.2em] uppercase border border-white/20 bg-white/10 backdrop-blur-sm text-white/80"
+            >
               {section.chip}
             </span>
 
-            {/* Title */}
             <h1
               ref={(el) => { titleRefs.current[index] = el; }}
-              className={`font-black text-transparent bg-clip-text bg-gradient-to-br ${section.titleGradient} drop-shadow-2xl whitespace-pre-line leading-[0.9] mb-6`}
-              style={{ fontSize: "clamp(3.5rem, 10vw, 8rem)", fontFamily: "Syne, sans-serif" }}
+              className={`font-black text-transparent bg-clip-text bg-gradient-to-br ${section.titleGradient} whitespace-pre-line leading-[0.9] mb-6`}
+              style={{ fontSize: "clamp(3rem, 9vw, 7rem)", fontFamily: "Syne, sans-serif" }}
             >
               {section.title}
             </h1>
 
-            {/* Subtitle */}
-            <p ref={(el) => { subtitleRefs.current[index] = el; }} className="text-lg md:text-2xl text-white/60 font-light tracking-wide">
+            <p
+              ref={(el) => { subtitleRefs.current[index] = el; }}
+              className="text-lg md:text-xl text-white/60 font-light tracking-wide"
+            >
               {section.subtitle}
             </p>
           </div>
@@ -154,7 +172,7 @@ export default function Sections() {
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
 
-          {/* Scroll hint */}
+          {/* Scroll hint — first section only */}
           {index === 0 && (
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-xs font-semibold tracking-[0.3em] uppercase">
               <span>Scroll</span>
