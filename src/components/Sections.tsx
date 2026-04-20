@@ -43,7 +43,7 @@ const sections = [
   {
     id: "vas",
     title: "MVAS",
-    subtitle: "Value Added Services.",
+    subtitle: "Mobile Value Added Services.",
     chip: "Connecting Billions",
     gradient: "from-[#1c0a00] via-[#92400e] to-[#f59e0b]",
     titleGradient: "from-orange-300 via-amber-200 to-yellow-300",

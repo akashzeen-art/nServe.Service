@@ -24,7 +24,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     };
 
     // Dismiss after GIF plays once (~3s). Adjust if GIF is longer/shorter.
-    const timer = setTimeout(handleDone, 2100);
+    const timer = setTimeout(handleDone, 2200);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
