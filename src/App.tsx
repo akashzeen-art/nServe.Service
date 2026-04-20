@@ -20,13 +20,14 @@ function ScrollToTop() {
 function FloatingContactBtn() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  if (pathname === "/contact") return null;
+  if (pathname === "/contact" || pathname === "/") return null;
   return (
     <button
       onClick={() => navigate("/contact")}
-      className="fixed bottom-6 left-6 z-[9998] bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold text-sm py-3 px-6 rounded-full shadow-xl hover:scale-105 active:scale-95 transition-all duration-200"
+      className="fixed bottom-6 left-6 z-[9998] bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold text-sm py-3 px-6 rounded-full shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 flex flex-col items-center leading-tight"
     >
-      Contact Us
+      <span className="text-white/70 text-xs font-medium">Interested for Collaboration?</span>
+      <span>Contact Us</span>
     </button>
   );
 }
