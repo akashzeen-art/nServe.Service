@@ -113,7 +113,8 @@ export default function Sections() {
   }, []);
 
   return (
-    <div ref={wrapperRef} style={{ height: `${(sections.length - 1) * 100}vh` }}>
+    // Wrapper height = (sections.length - 1) * 100vh + 100vh for last section
+    <div ref={wrapperRef} style={{ height: `${sections.length * 100}vh` }}>
       {sections.map((section, index) => (
         <div
           key={section.id}
