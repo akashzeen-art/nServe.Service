@@ -65,14 +65,28 @@ export default function Sections() {
   const blob2Refs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    ScrollTrigger.normalizeScroll(true);
-    ScrollTrigger.config({ ignoreMobileResize: true });
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    
+    if (isIOS) {
+      ScrollTrigger.normalizeScroll({
+        allowNestedScroll: true,
+        lockAxis: true,
+        type: "touch,wheel,pointer"
+      });
+    } else {
+      ScrollTrigger.normalizeScroll(true);
+    }
+    
+    ScrollTrigger.config({ 
+      ignoreMobileResize: true,
+      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
+    });
+    
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
-    const n = sections.length; // 4
+    const n = sections.length;
 
     const ctx = gsap.context(() => {
-      // Each transition gets exactly 1/(n-1) of total scroll distance
       sectionRefs.current.forEach((section, index) => {
         if (!section || index === 0) return;
 
@@ -86,7 +100,7 @@ export default function Sections() {
               trigger: wrapperRef.current,
               start: `${((index - 1) / (n - 1)) * 100}% top`,
               end: `${(index / (n - 1)) * 100}% top`,
-              scrub: 0.6,
+              scrub: isIOS ? 1 : 0.6,
               invalidateOnRefresh: true,
             },
           }
