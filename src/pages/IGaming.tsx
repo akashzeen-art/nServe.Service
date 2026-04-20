@@ -72,6 +72,20 @@ export default function IGaming() {
             </div>
           </div>
 
+          {/* Quiz Section */}
+          <div>
+            <h2 className="text-4xl font-black text-white mb-2">Quiz</h2>
+            <p className="text-gray-400 mb-8">Test your knowledge, win real rewards</p>
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+              {["/Game/Quiz1.png","/Game/Quiz2.png","/Game/Quiz3.png","/Game/Quiz4.png"].map((src, i) => (
+                <div key={i} className="rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
+                  <img src={src} alt={`Quiz ${i+1}`} className="w-full h-auto object-contain group-hover:brightness-110 transition-all duration-300" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+
           {/* About Play 365 */}
           <div className="rounded-2xl bg-gradient-to-br from-violet-600/20 to-purple-500/10 border border-violet-500/30 p-8">
             <div className="flex items-center gap-3 mb-4">
@@ -87,41 +101,28 @@ export default function IGaming() {
           </div>
 
           {/* Invite & Pricing */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="rounded-2xl bg-gradient-to-br from-purple-600/20 to-pink-500/10 border border-purple-500/30 p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <Users className="w-6 h-6 text-purple-400" />
-                <h3 className="text-white font-bold text-lg">Inviting Partners</h3>
-              </div>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                Agencies, Media Buyers & Publishers are invited to join our growing network and scale together.
-              </p>
-            </div>
-            <div className="rounded-2xl bg-gradient-to-br from-pink-600/20 to-rose-500/10 border border-pink-500/30 p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <DollarSign className="w-6 h-6 text-pink-400" />
-                <h3 className="text-white font-bold text-lg">Pricing Models</h3>
-              </div>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {models.map((m) => (
-                  <span key={m} className="bg-pink-500/20 border border-pink-500/40 text-pink-300 text-sm font-bold px-4 py-1.5 rounded-full">
-                    {m}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Quiz Section */}
-          <div>
-            <h2 className="text-4xl font-black text-white mb-2">Quiz</h2>
-            <p className="text-gray-400 mb-8">Test your knowledge, win real rewards</p>
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-              {["/Game/Quiz1.png","/Game/Quiz2.png","/Game/Quiz3.png","/Game/Quiz4.png"].map((src, i) => (
-                <div key={i} className="rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
-                  <img src={src} alt={`Quiz ${i+1}`} className="w-full h-auto object-contain group-hover:brightness-110 transition-all duration-300" />
+          <div className="rounded-2xl bg-gradient-to-br from-purple-600/20 to-pink-500/10 border border-purple-500/30 p-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+              <div className="flex items-center gap-3">
+                <Users className="w-6 h-6 text-purple-400 shrink-0" />
+                <div>
+                  <h3 className="text-white font-bold text-lg">Inviting Partners</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed mt-1">Agencies, Media Buyers & Publishers are invited to join our growing network and scale together.</p>
                 </div>
-              ))}
+              </div>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <DollarSign className="w-5 h-5 text-pink-400 shrink-0" />
+                  <span className="text-white font-bold">Pricing Models</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {models.map((m) => (
+                    <span key={m} className="bg-pink-500/20 border border-pink-500/40 text-pink-300 text-sm font-bold px-4 py-1.5 rounded-full">
+                      {m}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
