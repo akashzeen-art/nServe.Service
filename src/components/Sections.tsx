@@ -65,10 +65,14 @@ export default function Sections() {
   const blob2Refs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    ScrollTrigger.normalizeScroll(true);
+    ScrollTrigger.config({ ignoreMobileResize: true });
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
+    const n = sections.length; // 4
+
     const ctx = gsap.context(() => {
-      // Each section (except first) slides up from below as user scrolls
+      // Each transition gets exactly 1/(n-1) of total scroll distance
       sectionRefs.current.forEach((section, index) => {
         if (!section || index === 0) return;
 
@@ -79,12 +83,11 @@ export default function Sections() {
             yPercent: 0,
             ease: "none",
             scrollTrigger: {
-              trigger: section,
-              start: "top bottom",
-              end: "top top",
-              scrub: 0.4,
+              trigger: wrapperRef.current,
+              start: `${((index - 1) / (n - 1)) * 100}% top`,
+              end: `${(index / (n - 1)) * 100}% top`,
+              scrub: 0.6,
               invalidateOnRefresh: true,
-              anticipatePin: 1,
             },
           }
         );
@@ -97,18 +100,22 @@ export default function Sections() {
         .fromTo(subtitleRefs.current[0], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3")
         .fromTo(btnRefs.current[0], { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5 }, "-=0.3");
 
-      // Floating blobs
-      sectionRefs.current.forEach((_, i) => {
-        const b1 = blob1Refs.current[i];
-        const b2 = blob2Refs.current[i];
-        if (b1) gsap.to(b1, { x: 40, y: -40, duration: 6 + i, repeat: -1, yoyo: true, ease: "sine.inOut" });
-        if (b2) gsap.to(b2, { x: -30, y: 30, duration: 7 + i, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1.5 });
-      });
+      // Floating blobs — skip on mobile for performance
+      const isMobile = window.innerWidth < 768;
+      if (!isMobile) {
+        sectionRefs.current.forEach((_, i) => {
+          const b1 = blob1Refs.current[i];
+          const b2 = blob2Refs.current[i];
+          if (b1) gsap.to(b1, { x: 40, y: -40, duration: 6 + i, repeat: -1, yoyo: true, ease: "sine.inOut" });
+          if (b2) gsap.to(b2, { x: -30, y: 30, duration: 7 + i, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1.5 });
+        });
+      }
     }, wrapperRef);
 
     return () => {
       ctx.revert();
       ScrollTrigger.getAll().forEach((t) => t.kill());
+      ScrollTrigger.normalizeScroll(false);
     };
   }, []);
 
