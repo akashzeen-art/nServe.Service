@@ -23,7 +23,8 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       });
     };
 
-    const timer = setTimeout(handleDone, 5000);
+    // Dismiss after GIF plays once (~3s). Adjust if GIF is longer/shorter.
+    const timer = setTimeout(handleDone, 2100);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -34,14 +35,16 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       ref={wrapperRef}
       className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden"
     >
+      {/* Use timestamp in src to force browser to reload and play from frame 1 */}
       <img
-        src="/123123.gif"
+        src={`/123123.gif?t=${Date.now()}`}
         alt=""
         style={{
           width: size,
           height: size,
           objectFit: "cover",
           flexShrink: 0,
+          imageRendering: "auto",
         }}
       />
     </div>
