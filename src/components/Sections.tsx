@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,7 +11,6 @@ const sections = [
     id: "vod",
     title: "Video On\nDemand",
     subtitle: "Your Screen. Your Rules.",
-    chip: "CPA · CPM · CPS",
     gradient: "from-[#0f2027] via-[#1a4a6e] to-[#0ea5e9]",
     titleGradient: "from-sky-300 via-blue-200 to-cyan-300",
     link: "/vod",
@@ -22,7 +21,6 @@ const sections = [
     id: "igaming",
     title: "Play 365",
     subtitle: "Play Smart. Win Big.",
-    chip: "Skill Based · Fantasy Sports",
     gradient: "from-[#1a0533] via-[#6b21a8] to-[#ec4899]",
     titleGradient: "from-purple-300 via-pink-200 to-rose-300",
     link: "/igaming",
@@ -32,8 +30,7 @@ const sections = [
   {
     id: "nutra",
     title: "Nutraceutical\nProducts",
-    subtitle: "Straight from the Himalayan Valleys !",
-    chip: "Ameora · Play Tonight",
+    subtitle: "Straight from the Himalayan Valleys!",
     gradient: "from-[#022c22] via-[#065f46] to-[#14b8a6]",
     titleGradient: "from-emerald-300 via-green-200 to-teal-300",
     link: "/nutra",
@@ -43,8 +40,7 @@ const sections = [
   {
     id: "vas",
     title: "MVAS",
-    subtitle: "Mobile Value Added Services.",
-    chip: "Connecting Billions",
+    subtitle: "Value Added Services.",
     gradient: "from-[#1c0a00] via-[#92400e] to-[#f59e0b]",
     titleGradient: "from-orange-300 via-amber-200 to-yellow-300",
     link: "/vas",
@@ -53,6 +49,10 @@ const sections = [
   },
 ];
 
+// Detect iOS
+const isIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+  (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
 export default function Sections() {
   const navigate = useNavigate();
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -60,28 +60,14 @@ export default function Sections() {
   const titleRefs = useRef<(HTMLHeadingElement | null)[]>([]);
   const subtitleRefs = useRef<(HTMLParagraphElement | null)[]>([]);
   const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const chipRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const blob1Refs = useRef<(HTMLDivElement | null)[]>([]);
   const blob2Refs = useRef<(HTMLDivElement | null)[]>([]);
+  const [ios] = useState(isIOS);
 
   useEffect(() => {
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    
-    if (isIOS) {
-      ScrollTrigger.normalizeScroll({
-        allowNestedScroll: true,
-        lockAxis: true,
-        type: "touch,wheel,pointer"
-      });
-    } else {
-      ScrollTrigger.normalizeScroll(true);
-    }
-    
-    ScrollTrigger.config({ 
-      ignoreMobileResize: true,
-      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
-    });
-    
+    if (ios) return; // iOS uses CSS snap — no GSAP needed
+
+    ScrollTrigger.config({ ignoreMobileResize: true });
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
     const n = sections.length;
@@ -100,23 +86,21 @@ export default function Sections() {
               trigger: wrapperRef.current,
               start: `${((index - 1) / (n - 1)) * 100}% top`,
               end: `${(index / (n - 1)) * 100}% top`,
-              scrub: isIOS ? 1 : 0.6,
+              scrub: 0.6,
               invalidateOnRefresh: true,
             },
           }
         );
       });
 
-      // Entrance animation for first section
+      // Entrance animation
       gsap.timeline({ defaults: { ease: "power4.out" } })
-        .fromTo(titleRefs.current[0], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 })
-        .fromTo(chipRefs.current[0], { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5 }, "-=0.5")
-        .fromTo(subtitleRefs.current[0], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3")
+        .fromTo(titleRefs.current[0], { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 })
+        .fromTo(subtitleRefs.current[0], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
         .fromTo(btnRefs.current[0], { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5 }, "-=0.3");
 
-      // Floating blobs — skip on mobile for performance
-      const isMobile = window.innerWidth < 768;
-      if (!isMobile) {
+      // Blobs only on desktop
+      if (window.innerWidth >= 768) {
         sectionRefs.current.forEach((_, i) => {
           const b1 = blob1Refs.current[i];
           const b2 = blob2Refs.current[i];
@@ -129,13 +113,71 @@ export default function Sections() {
     return () => {
       ctx.revert();
       ScrollTrigger.getAll().forEach((t) => t.kill());
-      ScrollTrigger.normalizeScroll(false);
     };
-  }, []);
+  }, [ios]);
 
+  // ── iOS: CSS scroll-snap layout ──────────────────────────────────────────
+  if (ios) {
+    return (
+      <div
+        style={{
+          height: "100vh",
+          overflowY: "scroll",
+          scrollSnapType: "y mandatory",
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
+        {sections.map((section, index) => (
+          <div
+            key={section.id}
+            style={{ scrollSnapAlign: "start", scrollSnapStop: "always" }}
+            className={`relative h-screen w-full bg-gradient-to-br ${section.gradient} flex flex-col items-center justify-center overflow-hidden`}
+          >
+            {section.bg && (
+              <img src={section.bg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" />
+            )}
+
+            <span className="absolute top-8 left-8 font-black select-none leading-none text-white/[0.06]"
+              style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(4rem, 15vw, 8rem)" }}>
+              0{index + 1}
+            </span>
+
+            <div onClick={() => navigate(section.link)} className="relative z-10 text-center px-6 max-w-4xl cursor-pointer">
+              {index === 0 && (
+                <img src="/Nuta/timelogo.png" alt="logo" className="absolute -top-16 left-0 h-20 w-auto object-contain opacity-90" />
+              )}
+              <h1
+                className={`font-black text-transparent bg-clip-text bg-gradient-to-br ${section.titleGradient} whitespace-pre-line leading-tight pb-2 mb-4`}
+                style={{ fontSize: "clamp(2.2rem, 8vw, 5rem)", fontFamily: "Syne, sans-serif" }}
+              >
+                {section.title}
+              </h1>
+              <p className="text-base md:text-xl text-white/60 font-light tracking-wide">{section.subtitle}</p>
+            </div>
+
+            <button
+              onClick={() => navigate(section.link)}
+              className="absolute bottom-20 right-6 flex items-center gap-2 bg-white/10 border border-white/20 text-white text-sm font-semibold py-2.5 px-5 rounded-full group"
+            >
+              Know More
+              <ArrowRight className="w-4 h-4" />
+            </button>
+
+            {index === 0 && (
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-xs font-semibold tracking-[0.3em] uppercase">
+                <span>Scroll</span>
+                <div className="w-px h-8 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  // ── Non-iOS: GSAP stacked scroll ─────────────────────────────────────────
   return (
-    // Wrapper height = (sections.length - 1) * 100vh + 100vh for last section
-    <div ref={wrapperRef} style={{ height: `${sections.length * 100}vh` }}>
+    <div ref={wrapperRef} style={{ height: `${(sections.length - 1) * 100}vh` }}>
       {sections.map((section, index) => (
         <div
           key={section.id}
@@ -143,65 +185,49 @@ export default function Sections() {
           className={`sticky top-0 h-screen w-full bg-gradient-to-br ${section.gradient} flex flex-col items-center justify-center overflow-hidden`}
           style={{ zIndex: index + 1 }}
         >
-          {/* GIF background */}
           {section.bg && (
             <img src={section.bg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" />
           )}
 
-          {/* Blobs */}
           <div className="absolute inset-0 pointer-events-none">
-            <div ref={(el) => { blob1Refs.current[index] = el; }} className="absolute top-10 right-10 w-[500px] h-[500px] rounded-full blur-[120px] bg-white/10" />
-            <div ref={(el) => { blob2Refs.current[index] = el; }} className="absolute bottom-10 left-10 w-96 h-96 rounded-full blur-[100px] bg-white/10" />
+            <div ref={(el) => { blob1Refs.current[index] = el; }} className="absolute top-10 right-10 w-[400px] h-[400px] rounded-full blur-[100px] bg-white/10" />
+            <div ref={(el) => { blob2Refs.current[index] = el; }} className="absolute bottom-10 left-10 w-80 h-80 rounded-full blur-[80px] bg-white/10" />
           </div>
 
-          {/* Section number */}
-          <span className="absolute top-8 left-8 font-black select-none text-[120px] leading-none text-white/[0.06]" style={{ fontFamily: "Syne, sans-serif" }}>
+          <span className="absolute top-8 left-8 font-black select-none leading-none text-white/[0.06]"
+            style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(4rem, 15vw, 8rem)" }}>
             0{index + 1}
           </span>
 
-          {/* Content */}
           <div onClick={() => navigate(section.link)} className="relative z-10 text-center px-6 max-w-4xl cursor-pointer">
-
-            {/* Logo — only on VOD section */}
             {index === 0 && (
-              <img
-                src="/Nuta/timelogo.png"
-                alt="logo"
-                className="absolute -top-16 left-0 h-20 w-auto object-contain opacity-90"
-              />
+              <img src="/Nuta/timelogo.png" alt="logo" className="absolute -top-16 left-0 h-20 w-auto object-contain opacity-90" />
             )}
-
             <h1
               ref={(el) => { titleRefs.current[index] = el; }}
-              className={`font-black text-transparent bg-clip-text bg-gradient-to-br ${section.titleGradient} whitespace-pre-line leading-tight mb-6 pb-2`}
-              style={{ fontSize: "clamp(2.2rem, 6vw, 5rem)", fontFamily: "Syne, sans-serif" }}
+              className={`font-black text-transparent bg-clip-text bg-gradient-to-br ${section.titleGradient} whitespace-pre-line leading-tight pb-2 mb-4`}
+              style={{ fontSize: "clamp(2.2rem, 8vw, 5rem)", fontFamily: "Syne, sans-serif" }}
             >
               {section.title}
             </h1>
-
-            <p
-              ref={(el) => { subtitleRefs.current[index] = el; }}
-              className="text-lg md:text-xl text-white/60 font-light tracking-wide"
-            >
+            <p ref={(el) => { subtitleRefs.current[index] = el; }} className="text-base md:text-xl text-white/60 font-light tracking-wide">
               {section.subtitle}
             </p>
           </div>
 
-          {/* Know More */}
           <button
             ref={(el) => { btnRefs.current[index] = el; }}
             onClick={() => navigate(section.link)}
-            className="absolute bottom-8 right-8 flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-sm font-semibold py-2.5 px-5 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 group"
+            className="absolute bottom-20 right-6 md:bottom-8 md:right-8 flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-sm font-semibold py-2.5 px-5 rounded-full transition-all duration-300 active:scale-95 group"
           >
             Know More
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
 
-          {/* Scroll hint — first section only */}
           {index === 0 && (
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-xs font-semibold tracking-[0.3em] uppercase">
               <span>Scroll</span>
-              <div className="w-px h-10 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
+              <div className="w-px h-8 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
             </div>
           )}
         </div>
