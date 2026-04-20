@@ -15,17 +15,9 @@ const certifications = [
   { icon: Leaf, label: "Natural" },
 ];
 
-const regions = ["India", "China", "South East Asia", "US", "UK", "Europe"];
+const regions = ["India", "China", "South East Asia", "Middle East", "US", "UK", "Europe"];
 
 const products = [
-  {
-    id: "ameora",
-    name: "Ameora",
-    tagline: "Wellness For Women",
-    description: "Scientifically formulated blend of vitamins, minerals, herbs, and bioactive compounds designed for women's vitality.",
-    gradient: "from-emerald-600 to-teal-400",
-    accent: "emerald",
-  },
   {
     id: "playtonight",
     name: "Play Tonight",
@@ -34,12 +26,20 @@ const products = [
     gradient: "from-green-600 to-emerald-400",
     accent: "green",
   },
+  {
+    id: "ameora",
+    name: "Ameora",
+    tagline: "Wellness For Women",
+    description: "Scientifically formulated blend of vitamins, minerals, herbs, and bioactive compounds designed for women's vitality.",
+    gradient: "from-emerald-600 to-teal-400",
+    accent: "emerald",
+  },
 ];
 
 export default function Nutra() {
   return (
     <div className="min-h-screen bg-black">
-      <Navbar title="Nutra & Wellness" />
+      <Navbar title="Nutraceutical Products" />
 
       {/* Hero with GIF BG */}
       <div className="h-screen flex flex-col items-center justify-center text-white px-4 sm:px-8 relative overflow-hidden">
@@ -50,8 +50,8 @@ export default function Nutra() {
           <div className="absolute top-1/2 left-1/4 w-64 h-64 rounded-full blur-3xl bg-white/5" />
         </div>
         <div className="relative z-10 text-center">
-          <h2 className="text-4xl md:text-6xl font-black mb-6 drop-shadow-lg tracking-tight">Designed For You</h2>
-          <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">Straight from the valley!!</p>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 drop-shadow-lg tracking-tight">Nutraceutical Products</h2>
+          <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">Straight from the Himalayan Valleys !</p>
         </div>
       </div>
 
@@ -65,6 +65,51 @@ export default function Nutra() {
             <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
               Blends of vitamins, minerals, herbs, and bioactive compounds crafted for real results.
             </p>
+          </div>
+
+          {/* Products */}
+          <div>
+            <h2 className="text-4xl font-black text-white text-center mb-2">Our Products</h2>
+            <p className="text-gray-400 text-center mb-10">
+              Earn up to <span className="text-green-400 font-bold">$100</span> on each Straight Sale
+            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              {products.map((p) => (
+                <div
+                  key={p.id}
+                  className={`relative rounded-3xl overflow-hidden hover:scale-105 transition-all duration-300 ${
+                    p.id === "playtonight"
+                      ? "bg-blue-500/20 border border-blue-400/40"
+                      : "bg-pink-500/20 border border-pink-400/40"
+                  }`}
+                  style={{
+                    boxShadow: p.id === "playtonight"
+                      ? "0 0 40px rgba(59,130,246,0.3), 0 0 80px rgba(59,130,246,0.1)"
+                      : "0 0 40px rgba(236,72,153,0.3), 0 0 80px rgba(236,72,153,0.1)"
+                  }}
+                >
+                  <div className="absolute inset-0 bg-black/10" />
+                  <div className="flex flex-col items-center pt-8 px-8">
+                    <img
+                      src={p.id === "ameora" ? "/Nuta/ameora.png" : "/Nuta/Playtonight.png"}
+                      alt={p.name}
+                      className="w-56 h-56 object-contain drop-shadow-2xl"
+                    />
+                  </div>
+                  <div className="relative z-10 p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Leaf className="w-6 h-6 text-white" />
+                      <div>
+                        <h3 className="text-xl font-black text-white">{p.name}</h3>
+                        <p className="text-white/70 text-xs font-semibold uppercase tracking-wider">{p.tagline}</p>
+                      </div>
+                    </div>
+                    <p className="text-white/80 text-sm leading-relaxed">{p.description}</p>
+                    <div className="mt-4 h-0.5 w-12 bg-white/40 rounded-full" />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Certifications */}
@@ -107,46 +152,13 @@ export default function Nutra() {
             ))}
           </div>
 
-          {/* Products */}
-          <div>
-            <h2 className="text-4xl font-black text-white text-center mb-2">Our Products</h2>
-            <p className="text-gray-400 text-center mb-10">
-              Earn up to <span className="text-green-400 font-bold">$100</span> on each Straight Sale
-            </p>
-            <div className="grid md:grid-cols-2 gap-8">
-              {products.map((p) => (
-                <div key={p.id} className={`relative rounded-3xl bg-gradient-to-br ${p.gradient} overflow-hidden shadow-xl hover:scale-105 transition-all duration-300`}>
-                  <div className="absolute inset-0 bg-black/10" />
-                  <div className="flex flex-col items-center pt-8 px-8">
-                    <img
-                      src={p.id === "ameora" ? "/Nuta/ameora.png" : "/Nuta/Playtonight.png"}
-                      alt={p.name}
-                      className="w-56 h-56 object-contain drop-shadow-2xl"
-                    />
-                  </div>
-                  <div className="relative z-10 p-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Leaf className="w-6 h-6 text-white" />
-                      <div>
-                        <h3 className="text-xl font-black text-white">{p.name}</h3>
-                        <p className="text-white/70 text-xs font-semibold uppercase tracking-wider">{p.tagline}</p>
-                      </div>
-                    </div>
-                    <p className="text-white/80 text-sm leading-relaxed">{p.description}</p>
-                    <div className="mt-4 h-0.5 w-12 bg-white/40 rounded-full" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Target regions */}
           <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-            <div className="flex items-center gap-3 mb-5">
+            <div className="flex items-center justify-center gap-3 mb-6">
               <Globe className="w-6 h-6 text-green-400" />
               <h3 className="text-white font-bold text-lg">Target Regions</h3>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               {regions.map((r) => (
                 <span key={r} className="bg-green-500/20 border border-green-500/40 text-green-300 text-sm font-semibold px-4 py-1.5 rounded-full">
                   {r}

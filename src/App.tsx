@@ -24,10 +24,10 @@ function FloatingContactBtn() {
   return (
     <button
       onClick={() => navigate("/contact")}
-      className="fixed bottom-6 left-6 z-[9998] bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold text-sm py-3 px-6 rounded-full shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 flex flex-col items-center leading-tight"
+      className="fixed bottom-0 left-0 right-0 z-[9998] w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white py-5 px-6 shadow-[0_-4px_40px_rgba(249,115,22,0.5)] hover:shadow-[0_-4px_60px_rgba(249,115,22,0.7)] transition-all duration-200 flex flex-col items-center leading-tight"
     >
-      <span className="text-white/70 text-xs font-medium">Interested for Collaboration?</span>
-      <span>Contact Us</span>
+      <span className="text-white/70 text-sm font-semibold tracking-widest uppercase">Interested for Collaboration?</span>
+      <span className="text-2xl md:text-3xl font-black tracking-tight drop-shadow-[0_0_12px_rgba(255,255,255,0.6)]">Contact Us</span>
     </button>
   );
 }

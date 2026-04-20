@@ -31,8 +31,8 @@ const sections = [
   },
   {
     id: "nutra",
-    title: "Nutra &\nWellness",
-    subtitle: "Straight from the Himalayas.",
+    title: "Nutraceutical\nProducts",
+    subtitle: "Straight from the Himalayan Valleys !",
     chip: "Ameora · Play Tonight",
     gradient: "from-[#022c22] via-[#065f46] to-[#14b8a6]",
     titleGradient: "from-emerald-300 via-green-200 to-teal-300",
@@ -82,8 +82,9 @@ export default function Sections() {
               trigger: section,
               start: "top bottom",
               end: "top top",
-              scrub: 1,
+              scrub: 0.4,
               invalidateOnRefresh: true,
+              anticipatePin: 1,
             },
           }
         );
@@ -151,8 +152,8 @@ export default function Sections() {
 
             <h1
               ref={(el) => { titleRefs.current[index] = el; }}
-              className={`font-black text-transparent bg-clip-text bg-gradient-to-br ${section.titleGradient} whitespace-pre-line leading-[0.9] mb-6`}
-              style={{ fontSize: "clamp(3rem, 9vw, 7rem)", fontFamily: "Syne, sans-serif" }}
+              className={`font-black text-transparent bg-clip-text bg-gradient-to-br ${section.titleGradient} whitespace-pre-line leading-tight mb-6 pb-2`}
+              style={{ fontSize: "clamp(2.2rem, 6vw, 5rem)", fontFamily: "Syne, sans-serif" }}
             >
               {section.title}
             </h1>
