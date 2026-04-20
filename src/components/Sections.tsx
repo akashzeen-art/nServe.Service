@@ -113,8 +113,7 @@ export default function Sections() {
   }, []);
 
   return (
-    // Wrapper height = sections * 100vh so scroll room exists for each panel
-    <div ref={wrapperRef} style={{ height: `${sections.length * 100}vh` }}>
+    <div ref={wrapperRef} style={{ height: `${(sections.length - 1) * 100}vh` }}>
       {sections.map((section, index) => (
         <div
           key={section.id}
