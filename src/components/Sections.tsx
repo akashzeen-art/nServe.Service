@@ -53,6 +53,9 @@ const sections = [
 const isIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent) ||
   (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
+// Detect any mobile (iOS + Android)
+const isMobileDevice = () => isIOS() || /Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+
 export default function Sections() {
   const navigate = useNavigate();
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -62,7 +65,7 @@ export default function Sections() {
   const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const blob1Refs = useRef<(HTMLDivElement | null)[]>([]);
   const blob2Refs = useRef<(HTMLDivElement | null)[]>([]);
-  const [ios] = useState(isIOS);
+  const [ios] = useState(isMobileDevice);
 
   useEffect(() => {
     if (ios) return; // iOS uses CSS snap — no GSAP needed
