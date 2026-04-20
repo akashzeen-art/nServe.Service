@@ -164,7 +164,7 @@ export default function VOD() {
                 Connect with us and scale your media buying operations.
               </p>
             </div>
-            <div className="rounded-2xl bg-gradient-to-br from-green-600/20 to-emerald-500/10 border border-green-500/30 p-8">
+            <div className="rounded-2xl bg-gradient-to-br from-green-600/20 to-emerald-500/10 border border-green-500/30 p-8 flex flex-col items-center justify-center text-center">
               <div className="flex items-center gap-3 mb-4">
                 <DollarSign className="w-6 h-6 text-green-400" />
                 <h3 className="text-white font-bold text-lg">Opportunity To Earn</h3>
