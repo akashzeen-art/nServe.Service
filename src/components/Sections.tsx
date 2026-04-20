@@ -145,7 +145,7 @@ export default function Sections() {
               <img
                 src="/Nuta/timelogo.png"
                 alt="logo"
-                className="absolute -top-16 left-0 h-12 w-auto object-contain opacity-90"
+                className="absolute -top-8 left-0 h-20 w-auto object-contain opacity-90"
               />
             )}
 
