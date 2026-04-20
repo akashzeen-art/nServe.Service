@@ -104,10 +104,10 @@ export default function IGaming() {
           <div>
             <h2 className="text-4xl font-black text-white mb-2">iGame</h2>
             <p className="text-gray-400 mb-8">Next-gen multiplayer gaming experiences</p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
               {["/Game/Igame1.png","/Game/Igame2.png","/Game/Igame3.png","/Game/Igame4.png"].map((src, i) => (
-                <div key={i} className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
-                  <img src={src} alt={`iGame ${i+1}`} className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300" />
+                <div key={i} className="rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
+                  <img src={src} alt={`iGame ${i+1}`} className="w-full h-auto object-contain group-hover:brightness-110 transition-all duration-300" />
                 </div>
               ))}
             </div>
@@ -117,10 +117,10 @@ export default function IGaming() {
           <div>
             <h2 className="text-4xl font-black text-white mb-2">Quiz</h2>
             <p className="text-gray-400 mb-8">Test your knowledge, win real rewards</p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
               {["/Game/Quiz1.png","/Game/Quiz2.png","/Game/Quiz3.png","/Game/Quiz4.png"].map((src, i) => (
-                <div key={i} className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
-                  <img src={src} alt={`Quiz ${i+1}`} className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300" />
+                <div key={i} className="rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer group bg-slate-800">
+                  <img src={src} alt={`Quiz ${i+1}`} className="w-full h-auto object-contain group-hover:brightness-110 transition-all duration-300" />
                 </div>
               ))}
             </div>
