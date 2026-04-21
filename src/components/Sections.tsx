@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Play, Gamepad2, Leaf, Radio } from "lucide-react";
+import { useLang } from "@/lib/LangContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const sections = [
   {
     id: "vod",
-    title: "Video On\nDemand",
-    subtitle: "Your Screen. Your Rules.",
+    titleKey: "sec1Title",
+    subtitleKey: "sec1Sub",
     gradient: "from-[#0f2027] via-[#1a4a6e] to-[#0ea5e9]",
     titleGradient: "from-sky-300 via-blue-200 to-cyan-300",
     link: "/vod",
@@ -19,8 +20,8 @@ const sections = [
   },
   {
     id: "igaming",
-    title: "Play 365",
-    subtitle: "Play Smart. Win Big.",
+    titleKey: "sec2Title",
+    subtitleKey: "sec2Sub",
     gradient: "from-[#1a0533] via-[#6b21a8] to-[#ec4899]",
     titleGradient: "from-purple-300 via-pink-200 to-rose-300",
     link: "/igaming",
@@ -29,8 +30,8 @@ const sections = [
   },
   {
     id: "nutra",
-    title: "Nutraceutical\nProducts",
-    subtitle: "Straight from the Himalayan Valleys!",
+    titleKey: "sec3Title",
+    subtitleKey: "sec3Sub",
     gradient: "from-[#022c22] via-[#065f46] to-[#14b8a6]",
     titleGradient: "from-emerald-300 via-green-200 to-teal-300",
     link: "/nutra",
@@ -39,8 +40,8 @@ const sections = [
   },
   {
     id: "vas",
-    title: "MVAS",
-    subtitle: "Mobile Value Added Services.",
+    titleKey: "sec4Title",
+    subtitleKey: "sec4Sub",
     gradient: "from-[#1c0a00] via-[#92400e] to-[#f59e0b]",
     titleGradient: "from-orange-300 via-amber-200 to-yellow-300",
     link: "/vas",
@@ -58,6 +59,7 @@ const isMobileDevice = () => isIOS() || /Android/i.test(navigator.userAgent) || 
 
 export default function Sections() {
   const navigate = useNavigate();
+  const { t } = useLang();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const titleRefs = useRef<(HTMLHeadingElement | null)[]>([]);
@@ -153,9 +155,9 @@ export default function Sections() {
                 className={`font-black text-transparent bg-clip-text bg-gradient-to-br ${section.titleGradient} whitespace-pre-line leading-tight pb-2 mb-4`}
                 style={{ fontSize: "clamp(2.2rem, 8vw, 5rem)", fontFamily: "Syne, sans-serif" }}
               >
-                {section.title}
+                {t(section.titleKey as any)}
               </h1>
-              <p className="text-base md:text-xl text-white/60 font-light tracking-wide">{section.subtitle}</p>
+              <p className="text-base md:text-xl text-white/60 font-light tracking-wide">{t(section.subtitleKey as any)}</p>
             </div>
 
             <button
@@ -168,7 +170,7 @@ export default function Sections() {
 
             {index === 0 && (
               <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-xs font-semibold tracking-[0.3em] uppercase">
-                <span>Scroll</span>
+                <span>{t("scroll")}</span>
                 <div className="w-px h-8 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
               </div>
             )}
@@ -211,10 +213,10 @@ export default function Sections() {
               className={`font-black text-transparent bg-clip-text bg-gradient-to-br ${section.titleGradient} whitespace-pre-line leading-tight pb-2 mb-4`}
               style={{ fontSize: "clamp(2.2rem, 8vw, 5rem)", fontFamily: "Syne, sans-serif" }}
             >
-              {section.title}
+              {t(section.titleKey as any)}
             </h1>
             <p ref={(el) => { subtitleRefs.current[index] = el; }} className="text-base md:text-xl text-white/60 font-light tracking-wide">
-              {section.subtitle}
+              {t(section.subtitleKey as any)}
             </p>
           </div>
 
@@ -229,7 +231,7 @@ export default function Sections() {
 
           {index === 0 && (
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-xs font-semibold tracking-[0.3em] uppercase">
-              <span>Scroll</span>
+              <span>{t("scroll")}</span>
               <div className="w-px h-8 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
             </div>
           )}
