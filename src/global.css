@@ -42,6 +42,12 @@
     overflow: visible;
   }
 
+  /* Know More button float animation */
+  @keyframes btnFloat {
+    0%, 100% { transform: translateX(calc(-50% - 8px)); }
+    50% { transform: translateX(calc(-50% + 8px)); }
+  }
+
   /* Prevent gradient text clipping */
   .bg-clip-text {
     padding-bottom: 0.1em;

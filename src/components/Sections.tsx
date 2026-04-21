@@ -223,7 +223,8 @@ export default function Sections() {
           <button
             ref={(el) => { btnRefs.current[index] = el; }}
             onClick={() => navigate(section.link)}
-            className="absolute bottom-20 right-6 md:bottom-8 md:right-8 flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-sm font-semibold py-2.5 px-5 rounded-full transition-all duration-300 active:scale-95 group"
+            className="absolute flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-sm font-semibold py-3 px-6 rounded-full active:scale-95"
+            style={{ bottom: "30%", left: "50%", transform: "translateX(-50%)", boxShadow: "0 0 20px rgba(255,255,255,0.3), 0 0 40px rgba(255,255,255,0.1)", animation: "btnFloat 2s ease-in-out infinite" }}
           >
             Know More
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
