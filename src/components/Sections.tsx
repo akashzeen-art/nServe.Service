@@ -177,7 +177,7 @@ export default function Sections() {
             </button>
 
             {index === 0 && (
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-xs font-semibold tracking-[0.3em] uppercase">
+              <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-xs font-semibold tracking-[0.3em] uppercase" style={{ bottom: "30%" }}>
                 <span>{t("scroll")}</span>
                 <div className="w-px h-8 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
               </div>
@@ -246,7 +246,7 @@ export default function Sections() {
           </button>
 
           {index === 0 && (
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-xs font-semibold tracking-[0.3em] uppercase">
+            <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-xs font-semibold tracking-[0.3em] uppercase" style={{ bottom: "30%" }}>
               <span>{t("scroll")}</span>
               <div className="w-px h-8 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
             </div>

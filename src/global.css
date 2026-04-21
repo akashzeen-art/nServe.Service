@@ -44,9 +44,9 @@
 
   /* Know More button float animation */
   @keyframes btnFloat {
-    0%   { transform: translateX(0px); }
-    50%  { transform: translateX(-12px); }
-    100% { transform: translateX(0px); }
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
   }
 
   /* Prevent gradient text clipping */
