@@ -38,8 +38,8 @@ export default function MMVAS() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-3xl bg-white/5" />
         </div>
         <div className="relative z-10 text-center">
-          <p className="text-orange-400 font-bold uppercase tracking-widest text-sm mb-4">Telecom</p>
-          <h2 className="text-4xl md:text-6xl font-black mb-6 drop-shadow-lg tracking-tight">MVAS</h2>
+          <p className="text-orange-400 font-bold uppercase tracking-widest text-sm mb-4">{t("vasAboutLabel")}</p>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 drop-shadow-lg tracking-tight">{t("vasHero")}</h2>
           <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">
             
           </p>
@@ -53,9 +53,9 @@ export default function MMVAS() {
           {/* About */}
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <p className="text-orange-400 font-bold uppercase tracking-widest text-sm mb-3">About</p>
+              <p className="text-orange-400 font-bold uppercase tracking-widest text-sm mb-3">{t("vasAboutLabel")}</p>
               <h2 className="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">
-                Revolutionizing Technology
+                {t("vasAboutHead")}
               </h2>
               <p className="text-gray-400 leading-relaxed mb-6">
                 {t("vasAbout1")}
@@ -165,7 +165,7 @@ export default function MMVAS() {
                 <p className="text-white/70 text-sm mt-1">{t("vasTelecom")}</p>
               </div>
               <div className="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
-                <p className="text-4xl font-black text-orange-400" style={{ fontFamily: "Syne, sans-serif" }}>Global</p>
+                <p className="text-2xl font-black text-orange-400" style={{ fontFamily: "Syne, sans-serif" }}>{t("vasFlow")}</p>
                 <p className="text-white/70 text-sm mt-1">{t("vasGlobal")}</p>
               </div>
               <div className="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
