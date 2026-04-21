@@ -179,7 +179,7 @@ const T = {
 
     // Contact
     conNav: "联系我们", conTitle: "联系我们", conSub: "我们随时为您提供帮助。",
-    conAddress: "地址", conEmail: "电子邮件", conPhone: "电话", conTelegram: "Telegram",
+    conAddress: "地址", conEmail: "电子邮件", conPhone: "电话", conTelegram: "电报 Telegram",
     conGetInTouch: "联系方式",
   },
 };
