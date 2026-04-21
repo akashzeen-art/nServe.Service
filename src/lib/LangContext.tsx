@@ -121,7 +121,7 @@ const T = {
     vodFeature3: "短视频", vodFeature4: "AI生成高清内容",
 
     // iGaming
-    igNav: "电子竞技", igHero: "电子竞技", igHeroSub: "智慧游戏，赢得大奖。",
+    igNav: "电子竞技IGaming", igHero: "电子竞技IGaming", igHeroSub: "智慧游戏，赢得大奖。",
     igFeat1: "技术", igFeat2: "参与度", igFeat3: "即时奖励",
     igOnline: "在线实时", igSkill: "技能型梦幻体育",
     igTagline: "新型电子竞技 — 技能与刺激的结合",
