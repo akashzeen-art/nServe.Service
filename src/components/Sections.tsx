@@ -162,10 +162,18 @@ export default function Sections() {
 
             <button
               onClick={() => navigate(section.link)}
-              className="absolute bottom-20 right-6 flex items-center gap-2 bg-white/10 border border-white/20 text-white text-sm font-semibold py-2.5 px-5 rounded-full group"
+              className="absolute flex items-center gap-3 bg-white/15 backdrop-blur-md border-2 border-white/40 text-white font-black text-base py-4 px-8 rounded-full"
+              style={{
+                bottom: "12%",
+                right: 0,
+                boxShadow: "0 0 25px rgba(255,255,255,0.5), 0 0 60px rgba(255,255,255,0.2), inset 0 0 20px rgba(255,255,255,0.05)",
+                animation: "btnFloat 1.8s ease-in-out infinite",
+                whiteSpace: "nowrap",
+                zIndex: 20,
+              }}
             >
-              Know More
-              <ArrowRight className="w-4 h-4" />
+              {t("knowMore")}
+              <ArrowRight className="w-5 h-5" />
             </button>
 
             {index === 0 && (
@@ -223,11 +231,18 @@ export default function Sections() {
           <button
             ref={(el) => { btnRefs.current[index] = el; }}
             onClick={() => navigate(section.link)}
-            className="absolute flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-sm font-semibold py-3 px-6 rounded-full active:scale-95"
-            style={{ bottom: "30%", left: "50%", transform: "translateX(-50%)", boxShadow: "0 0 20px rgba(255,255,255,0.3), 0 0 40px rgba(255,255,255,0.1)", animation: "btnFloat 2s ease-in-out infinite" }}
+            className="absolute flex items-center gap-3 bg-white/15 backdrop-blur-md border-2 border-white/40 text-white font-black text-base py-4 px-8 rounded-full active:scale-95"
+            style={{
+              bottom: "12%",
+              right: 0,
+              boxShadow: "0 0 25px rgba(255,255,255,0.5), 0 0 60px rgba(255,255,255,0.2), inset 0 0 20px rgba(255,255,255,0.05)",
+              animation: "btnFloat 1.8s ease-in-out infinite",
+              whiteSpace: "nowrap",
+              zIndex: 20,
+            }}
           >
-            Know More
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            {t("knowMore")}
+            <ArrowRight className="w-5 h-5" />
           </button>
 
           {index === 0 && (
